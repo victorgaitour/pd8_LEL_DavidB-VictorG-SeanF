@@ -1,15 +1,16 @@
 import java.util.*;
 import java.lang.*;
 import java.lang.reflect.Array;
-
+import java.lang.Object.*;
 
 public class ArrayVisualizer <T> {
-    T [] vis;
+    private  T[] vis;
     private int slot;
     
-    public ArrayVisualizer (T type, int size) {
+    public ArrayVisualizer (int size) {
 	@SuppressWarnings("unchecked")
-	vis = (T[]) Array.newInstance (type , size);
+	T[] s =(T[]) new Object[size];
+	vis = s;
 	slot = 0;
     }
     
@@ -21,7 +22,7 @@ public class ArrayVisualizer <T> {
 	    else
 		System.out.print ( vis [i] + ","); 
 	}
-	if (vis [vis.length - 1] == null) 
+	if (vis [vis.length - 1] == null)  
 	    System.out.print ( " ]");
 	else
 	    System.out.print ( vis [vis.length - 1] + " ]");
@@ -29,6 +30,7 @@ public class ArrayVisualizer <T> {
 
     public void add (T stuff) {//adds to next empty slot in array
 	try{
+	    @SuppressWarnings("unchecked")
 	    while (vis [slot] != null) 
 		slot ++;
 	    vis [slot] = stuff;
@@ -41,6 +43,7 @@ public class ArrayVisualizer <T> {
    
     public void delete () {//deletes rightmost value in array
 	try{
+	    @SuppressWarnings("unchecked")	     
 	    while (vis [slot] == null) 
 		slot --;
 	    vis [slot] = null;
@@ -53,6 +56,7 @@ public class ArrayVisualizer <T> {
     
     public void insert (int index,  T stuff) {
 	try{
+	    @SuppressWarnings("unchecked")
 	    vis [index] = stuff;
 	}
 	catch (Exception e) {
@@ -62,11 +66,17 @@ public class ArrayVisualizer <T> {
    
     public void delete (int index) {
 	try{
+	    @SuppressWarnings("unchecked")
 	    vis [index] = null;
 	}
 	catch (Exception e) {
 	    System.out.println (e.getMessage());
 	}
+    }
+
+    public static void main (String [] args) {
+	ArrayVisualizer test = new ArrayVisualizer (5);
+	test.add (10);
     }
 }
 	    
