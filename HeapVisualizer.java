@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 
-public class HeapVisualizer<T>{
+public class HeapVisualizer{
     final static String ESC = "\033[";
-    private ALHeap<T> heap;
-    public HeapVisualizer(ArrayList<T> lel){
-	heap=new ALHeap<T>();
-	for (T s : lel){
+    private ALHeap heap;
+    public HeapVisualizer(ArrayList<Integer> lel){
+	heap=new ALHeap();
+	for (int s : lel){
 	    heap.add(s);
 	}
     }
-    public void add(T stuff){
+    public HeapVisualizer(){
+	heap=new ALHeap();
+    }
+    public void add(int stuff){
 	heap.add(stuff);
 	System.out.println(ESC+"2J");
 	System.out.println(heap);
@@ -19,12 +22,15 @@ public class HeapVisualizer<T>{
 	System.out.println(ESC+"2J");
 	System.out.println(heap);
     }
+    public String toString(){
+	return heap.toString();
+    }
 	
 
-    public class ALHeap<T> {
+    public class ALHeap {
 	
 	//instance vars
-	private ArrayList<T> heap; //underlying container
+	private ArrayList<Integer> heap; //underlying container
     
 	
 	/*****************************************************
@@ -32,7 +38,7 @@ public class HeapVisualizer<T>{
 	 *****************************************************/
 	public ALHeap()
 	{
-	    heap= new ArrayList<T>();
+	    heap= new ArrayList<Integer>();
 	    // /*** YOUR IMPLEMENTATION HERE ***/
 	}//O(1)
 	
@@ -55,7 +61,7 @@ public class HeapVisualizer<T>{
 	 * Inserts an element in the heap
 	 * Postcondition: Tree maintains heap property.
 	 *****************************************************/
-	public void add( T addVal )
+	public void add( int addVal )
 	{
 	    if (isEmpty()){
 		heap.add(addVal);
@@ -84,7 +90,7 @@ public class HeapVisualizer<T>{
 	 * Returns min value in heap
 	 * Postcondition: Heap remains unchanged.
 	 *****************************************************/
-	public T peekMin()
+	public int peekMin()
 	{
 	    return heap.get(0);
 	    // /*** YOUR IMPLEMENTATION HERE ***/
@@ -97,15 +103,15 @@ public class HeapVisualizer<T>{
 	 * Removes and returns least element in heap.
 	 * Postcondition: Tree maintains heap property.
 	 *****************************************************/
-	public T removeMin()
+	public int removeMin()
 	{	if ( heap.size() == 0 )
-		return null;
+		return 0;
 	    
 	    //store root value for return at end of fxn
-	    T retVal = peekMin();
+	    Integer retVal = peekMin();
 	    
 	    //store val about to be swapped into root
-	    T foo = heap.get( heap.size() - 1);
+	    Integer foo = heap.get( heap.size() - 1);
 	    
 	    //swap last (rightmost, deepest) leaf with root
 	    swap( 0, heap.size() - 1 );
@@ -193,29 +199,13 @@ public class HeapVisualizer<T>{
      *****************************************************/
 	public String toString()
 	{
-	    int spaces=0;
-	    int dashes;
-	    String retstr="";
-	    if (isEmpty()){
-		return heap.toString();
+	    String lel="";
+	    for (int i=0; i<heap.size();i++){
+		lel=lel + i + "  ";
 	    }
-	    int height=1;
-	    while (heap.size()>Math.pow(2,height)){
-		height++;
-	    }
-	    int prevLength=heap.size()-1;
-	    for (int i = height; i>0; i--){
-		int length = Math.pow(2, i-1);
-		prevLength=length-1;
-		retstr="\n"+retstr;
-		for(int k=0; k<spaces; k++){
-		    retstr=
-		for(int j=length;j<prevLength; j++){
-		    retstr=retstr + "" + heap.get(j);
-		
-	    
+	    String retstr="Heap: " + heap.toString()+"\n";
+	    retstr+="Index: "+ lel+ "\n";
+	    return retstr;
 	}//O(?)
-	
-	
-    }    
-}
+    }
+}    
