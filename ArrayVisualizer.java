@@ -6,6 +6,7 @@ import java.lang.Object.*;
 public class ArrayVisualizer <T> {
     private  T[] vis;
     private int slot;
+    final static String ESC = "\033[";
     
     public ArrayVisualizer (int size) {
 	@SuppressWarnings("unchecked")
@@ -30,24 +31,28 @@ public class ArrayVisualizer <T> {
 
     public void add (T stuff) {//adds to next empty slot in array
 	try{
-	    @SuppressWarnings("unchecked")
 	    while (vis [slot] != null) 
 		slot ++;
 	    vis [slot] = stuff;
 	    slot ++;
+	    System.out.print(ESC + "2J"); //clear the screen
+	    this.print ();
 	}
 	catch (Exception e) {
 	    System.out.println (e.getMessage() + ": Array is full");
 	}
+
     }
    
     public void delete () {//deletes rightmost value in array
 	try{
-	    @SuppressWarnings("unchecked")	     
+	     
 	    while (vis [slot] == null) 
 		slot --;
 	    vis [slot] = null;
 	    slot --;
+	    System.out.print(ESC + "2J"); //clear the screen
+	    this.print ();
 	}
 	catch (Exception e) {
 	    System.out.println (e.getMessage());
@@ -56,8 +61,10 @@ public class ArrayVisualizer <T> {
     
     public void insert (int index,  T stuff) {
 	try{
-	    @SuppressWarnings("unchecked")
+
 	    vis [index] = stuff;
+	    System.out.print(ESC + "2J"); //clear the screen
+	    this.print ();
 	}
 	catch (Exception e) {
 	    System.out.println (e.getMessage());
@@ -66,8 +73,10 @@ public class ArrayVisualizer <T> {
    
     public void delete (int index) {
 	try{
-	    @SuppressWarnings("unchecked")
+
 	    vis [index] = null;
+	    System.out.print(ESC + "2J"); //clear the screen
+	    this.print ();
 	}
 	catch (Exception e) {
 	    System.out.println (e.getMessage());
@@ -76,7 +85,8 @@ public class ArrayVisualizer <T> {
 
     public static void main (String [] args) {
 	ArrayVisualizer test = new ArrayVisualizer (5);
-	test.add (10);
+	Integer a = new Integer (10);
+	test.add (a);
     }
 }
 	    
