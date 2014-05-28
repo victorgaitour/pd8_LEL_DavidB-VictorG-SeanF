@@ -1,1 +1,6 @@
 We decided on our idea which is the data structure visualizer - DB, VG, SF 5/26/14
+
+
+5/28/14
+We started working on the core of our project and we are making it so that it works via the command line. -SF
+We have developed the basic data structures and will modify them to allow for them to display info and modify the data set.-DB VG
