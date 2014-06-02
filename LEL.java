@@ -14,12 +14,15 @@ public class LEL {
 	try {
 	    int choice1 = sc.nextInt();
 	    if ( choice1 == 1 ) {
-		System.out.print( "Your file name: " );
 		try {
-		    String filename = sc.nextLine();
+		    System.out.print( "Your file name: " );
+		    String filename = sc.next();
+		    System.out.println( "Your file name: " + filename );
 		    BufferedReader reader = new BufferedReader( new FileReader( filename ) );
-		    while ( reader.readLine() != null )
+		    while ( reader.readLine() != null ) {
+			System.out.println( "readLine: " + reader.readLine() );
 			inputData += reader.readLine();
+		    }
 		}
 		catch (Exception e) {
 		    System.out.println( "ERROR: file not found" );
@@ -27,7 +30,7 @@ public class LEL {
 	    }
 	    else if ( choice1 == 2 ) {
 		System.out.print( "Enter your data (separated by commas, NO SPACES): " );
-		inputData = sc.nextLine();
+		inputData = sc.next();
 	    }
 	    else
 		System.out.println( "ERROR: Please input a valid int" );
@@ -36,14 +39,17 @@ public class LEL {
 	    System.out.println( "ERROR: Please input a valid int" );
 	}
 
+	System.out.println( "inputData: " + inputData );
 	ArrayList data = new ArrayList<String>();
 	for ( int i = 0; i < inputData.length(); i++ ) {
 	    String value = "";
 	    while ( !(inputData.substring( i, i+1 ).equals(",") || inputData.substring( i, i+1 ).equals("")) ) { //isn't comma or end of string
 		value += inputData.substring( i, i+1 );
+		System.out.println( "Value: " + value );
 		i++;
 	    }
 	    i++; //skips comma
+	    System.out.println( "Value: " + value );
 	    data.add( value );
 	}
 
@@ -84,12 +90,12 @@ public class LEL {
 		try {
 		    graphChoice = sc.nextInt();
 		    System.out.print( "Enter a graph title: " );
-		    graphTitle = sc.nextLine();
+		    graphTitle = sc.next();
 		    if ( graphChoice == 1 || graphChoice == 2 ) { //Bar or Line graph
 			System.out.print( "Enter a x-axis title: " );
-			xTitle = sc.nextLine();
+			xTitle = sc.next();
 			System.out.print( "Enter a y-axis title: " );
-			yTitle = sc.nextLine();
+			yTitle = sc.next();
 		    }
 		    else if ( graphChoice != 3 )
 			System.out.println( "ERROR: Please enter a valid int" );
