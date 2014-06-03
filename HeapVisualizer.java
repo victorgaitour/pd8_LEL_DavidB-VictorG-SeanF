@@ -14,12 +14,10 @@ public class HeapVisualizer{
     }
     public void add(int stuff){
 	heap.add(stuff);
-	System.out.println(ESC+"2J");
 	System.out.println(heap);
     }
     public void delete(){
 	heap.removeMin();
-	System.out.println(ESC+"2J");
 	System.out.println(heap);
     }
     public String toString(){
@@ -199,7 +197,7 @@ public class HeapVisualizer{
      *****************************************************/
 	public String toString()
 	{
-	    String lel="";
+	    String lel=ESC + "2J";
 	    for (int i=0; i<heap.size();i++){
 		if (i<10){//for spacing in single digits
 		    lel=lel + i + "  ";
