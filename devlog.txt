@@ -9,6 +9,6 @@ We have developed the basic data structures and will modify them to allow for th
 We have created an arraylist visualizer-VG DB
 We have started working on an array visualizer and a heap visualiser - VG DB
 
-6/2/15
+6/2/14
 We have worked on heapvisualizer and stackvisualizer,  it is almost functional. ArrayVisualizer has been finished- DB VG
 Worked on Driver/LeL file - SF
