@@ -49,6 +49,12 @@ public class StackVisualizer <T> {
 	    return null;
 	}
     }
+    public static void main (String [] args) {
+	StackVisualizer a = new StackVisualizer ();
+	Integer b = new Integer (7);
+	a.push (b);
+    }
+	    
 }
     
     
