@@ -19,10 +19,13 @@ public class LEL {
 		    String filename = sc.next();
 		    System.out.println( "Your file name: " + filename );
 		    BufferedReader reader = new BufferedReader( new FileReader( filename ) );
-		    while ( reader.readLine() != null ) {
-			System.out.println( "readLine: " + reader.readLine() );
-			inputData += reader.readLine();
+		    String line = reader.readLine();
+		    while ( line != null ) {
+			//System.out.println( "readLine: " + line );
+			inputData += line + ",";
+			line = reader.readLine();
 		    }
+		    inputData = inputData.substring( 0, inputData.length()-1 );
 		}
 		catch (Exception e) {
 		    System.out.println( "ERROR: file not found" );
@@ -40,17 +43,18 @@ public class LEL {
 	}
 
 	System.out.println( "inputData: " + inputData );
-	ArrayList data = new ArrayList<String>();
+	ArrayList<String> data = new ArrayList<String>();
 	for ( int i = 0; i < inputData.length(); i++ ) {
 	    String value = "";
-	    while ( !(inputData.substring( i, i+1 ).equals(",") || inputData.substring( i, i+1 ).equals("")) ) { //isn't comma or end of string
+	    while ( i < inputData.length() && !(inputData.substring( i, i+1 ).equals(",") || inputData.substring( i, i+1 ).equals("")) ) { //isn't comma or end of string
 		value += inputData.substring( i, i+1 );
-		System.out.println( "Value: " + value );
+		//System.out.println( "Value: " + value );
 		i++;
 	    }
-	    i++; //skips comma
-	    System.out.println( "Value: " + value );
+	    //i++; //skips comma
+	    //System.out.println( "value: " + value );
 	    data.add( value );
+	    //System.out.println( data );
 	}
 
 	//^^^ENTERING DATA CODE^^^
