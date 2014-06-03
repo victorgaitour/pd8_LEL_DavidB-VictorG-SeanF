@@ -4,5 +4,11 @@ We decided on our idea which is the data structure visualizer - DB, VG, SF 5/26/
 5/28/14
 We started working on the core of our project and we are making it so that it works via the command line. -SF
 We have developed the basic data structures and will modify them to allow for them to display info and modify the data set.-DB VG
+
+5/29/14
 We have created an arraylist visualizer-VG DB
 We have started working on an array visualizer and a heap visualiser - VG DB
+
+6/2/15
+We have worked on heapvisualizer and stackvisualizer,  it is almost functional. ArrayVisualizer has been finished- DB VG
+Worked on Driver/LeL file - SF
