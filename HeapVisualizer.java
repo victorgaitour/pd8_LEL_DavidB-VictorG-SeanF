@@ -201,8 +201,24 @@ public class HeapVisualizer{
 	{
 	    String lel="";
 	    for (int i=0; i<heap.size();i++){
-		lel=lel + i + "  ";
+		if (i<10){//for spacing in single digits
+		    lel=lel + i + "  ";
+		    int j=heap.get(i);
+		    while(j>=10){ //for spacing
+			lel=lel+" ";
+			j=j/10;
+		    }
+		}
+		else {//for spacing in double digits
+		    lel=lel+i;
+		    int j=heap.get(i);
+		    while(j>=10){
+			lel=lel+" ";
+			j=j/10;
+		    }
+		}
 	    }
+	
 	    String retstr="Heap: " + heap.toString()+"\n";
 	    retstr+="Index: "+ lel+ "\n";
 	    return retstr;
