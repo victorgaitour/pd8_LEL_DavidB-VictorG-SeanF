@@ -18,5 +18,7 @@ public class PieChart extends JFrame {
     public JFreeChart createChart() {
 	System.out.println( "Creating chart..." );
 	PiePlot plot = new PiePlot( data );
+	JFreeChart chart = new JFreeChart( plot );
+	return chart;
     }
 }
