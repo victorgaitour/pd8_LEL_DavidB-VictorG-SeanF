@@ -32,6 +32,7 @@ public class StackVisualizer <T> {
 	}
 	catch (Exception e ) {	
 	    System.out.println (e.getMessage() + ": Stack is empty");
+	    return null;
 	}
 	    
     }
@@ -45,8 +46,15 @@ public class StackVisualizer <T> {
 	}
 	catch (Exception e ) {	
 	    System.out.println (e.getMessage() + ": Stack is empty");
+	    return null;
 	}
     }
+    public static void main (String [] args) {
+	StackVisualizer a = new StackVisualizer ();
+	Integer b = new Integer (7);
+	a.push (b);
+    }
+	    
 }
     
     
