@@ -1,0 +1,5 @@
+	Sean has worked on the project's driver file.  He created the user-terminal interactions and set up a series of if-else statements to implement the bulk of the project.  His driver is basically a skeleton for the project, so that the specific data structures can each be finished individually and then put into the driver.  He also recently began researching how to do java charts and graphs.
+
+	One milestone is that the driver file compiles and runs, with the user-terminal interactions working as planned.  
+
+	One obstacle is using the file scanner to read in a file's data.  This has not yet been resolved.
