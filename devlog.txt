@@ -12,3 +12,11 @@ We have started working on an array visualizer and a heap visualiser - VG DB
 6/2/14
 We have worked on heapvisualizer and stackvisualizer,  it is almost functional. ArrayVisualizer has been finished- DB VG
 Worked on Driver/LeL file - SF
+
+6/3/14
+Finished StackVisualizer, started BST visualizer-DB
+Started reworking ArrayList Visualizer-VG
+Driver can now read in files-SF
+
+6/4/14
+Finished reworking ArrayListVisualizer, started working on QueueVisualizer-VG
