@@ -1,6 +1,27 @@
 public class Driver{
     public static void main (String args[]){
-	//test for ArrayList
+	//test for Queue
+	QueueVisualizer stuff= new QueueVisualizer();
+	stuff.add(1);
+	stuff.add(2);
+	stuff.add(3);
+	stuff.add(1234);
+	stuff.add(1234);
+	stuff.add(145);
+	stuff.add(165);
+	stuff.add(561);
+	stuff.add(51);
+	stuff.add(41);
+	stuff.add(51);
+	stuff.add(16);
+	stuff.add(515);
+	stuff.add(51);
+	stuff.add(51);
+	stuff.add(15);
+	stuff.add(515);
+	stuff.add(515);
+
+	/*//test for ArrayList
 	ArrayListVisualizer stuff= new ArrayListVisualizer();
 	stuff.add(1);
 	stuff.add(2);
@@ -21,7 +42,7 @@ public class Driver{
 	stuff.add(515);
 	stuff.add(515);
 	//test for heap
-	/*HeapVisualizer pile= new HeapVisualizer();
+	HeapVisualizer pile= new HeapVisualizer();
 	   
 	
 	pile.add(2);
