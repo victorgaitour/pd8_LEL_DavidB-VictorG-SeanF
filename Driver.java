@@ -1,7 +1,7 @@
 public class Driver{
     public static void main (String args[]){
 	//test for ArrayList
-	ArrayListVisualizer<Integer> stuff= new ArrayListVisualizer<Integer>();
+	ArrayListVisualizer stuff= new ArrayListVisualizer();
 	stuff.add(1);
 	stuff.add(2);
 	stuff.add(3);
