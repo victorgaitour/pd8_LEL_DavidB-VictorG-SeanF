@@ -4,6 +4,7 @@
 
 import java.io.*;
 import java.util.*;
+import javax.swing.*;
 
 public class LEL {
     
@@ -12,6 +13,7 @@ public class LEL {
 	System.out.print( "Would you like to: 1) Read in a .csv file (in the same directory as this java file) with your data 2) Enter your data in the terminal?\n1 or 2: " );
 	Scanner sc = new Scanner( System.in );
 	String inputData = "";
+
 	try {
 	    int choice1 = sc.nextInt();
 	    if ( choice1 == 1 ) {
@@ -96,11 +98,24 @@ public class LEL {
 		    graphChoice = sc.nextInt();
 		    System.out.print( "Enter a graph title: " );
 		    graphTitle = sc.next();
+		    JFrame chartFrame = new JFrame();
+		    chartFrame.setSize(100, 100);
+		    chartFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    if ( graphChoice == 1 || graphChoice == 2 ) { //Bar or Line graph
 			System.out.print( "Enter a x-axis title: " );
 			xTitle = sc.next();
 			System.out.print( "Enter a y-axis title: " );
 			yTitle = sc.next();
+		    }
+		    else if ( graphChoice == 3 ) {
+			Piechart pieChart = new PieChart( graphTitle );
+			ChartPanel chart = pieChart.createChart();
+			JPanel chartPanel = new JPanel();
+			chartPanel.setLayout(new java.awt.BorderLayout());
+			chartPanel.add(chart, BorderLayout.CENTER);
+			chartPanel.validate();
+			chartFrame.add( chartPanel );
+			chartFrame.setVisible( true );
 		    }
 		    else if ( graphChoice != 3 )
 			System.out.println( "ERROR: Please enter a valid int" );

@@ -1,5 +1,6 @@
 
 import org.jfree.*;
+import javax.swing.*;
 
 public class PieChart extends JFrame {
 
@@ -15,10 +16,11 @@ public class PieChart extends JFrame {
 	pieDataset.setValue( s, Integer.parseInt(s) );
     }
 
-    public JFreeChart createChart() {
+    public ChartPanel createChart() {
 	System.out.println( "Creating chart..." );
 	PiePlot plot = new PiePlot( data );
-	JFreeChart chart = new JFreeChart( plot );
+	JFreeChart chartFree = new JFreeChart( plot );
+	ChartPanel chart = new ChartPanel(chartFree);
 	return chart;
     }
 }
