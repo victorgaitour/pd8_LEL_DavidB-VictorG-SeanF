@@ -3,10 +3,18 @@ import java.lang.*;
 
 
 public class BSTVisualizer <T> {
-    ArrayList <T> tree = new ArrayList <T> ();
-    int size = 0;
+    ArrayList <T> tree;
+    int size;
+
+    public BSTVisualizer () {
+	@SuppressWarnings("unchecked")
+	ArrayList <T> t  = new ArrayList <T> ();
+	tree = t;
+	size = 0;
+    }
     
     public void add (T data) {
+	tree.add (data);
     }
 	
     //put old BST stuff here
@@ -47,6 +55,14 @@ public class BSTVisualizer <T> {
 	return retStr;
     }
 
+    @SuppressWarnings("unchecked")
+    public static void main (String [] args) {
+	BSTVisualizer test = new BSTVisualizer ();
+	Integer a = new Integer (10);
+	test.add (a);
+	Integer b = new Integer (11);	
+	test.add (b);
+    }
 }
 	    
 	    
