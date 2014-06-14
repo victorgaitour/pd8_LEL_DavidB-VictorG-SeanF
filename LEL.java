@@ -4,7 +4,20 @@
 
 import java.io.*;
 import java.util.*;
+import java.awt.*;
+import org.jfree.chart.*;
+import org.jfree.data.*;
+import org.jfree.data.general.*;
+import org.jfree.chart.plot.*;
 import javax.swing.*;
+
+/***********************************
+TO COMPILE:
+javac -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." LEL.java
+
+TO RUN:
+java -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." LEL
+**********************************/
 
 public class LEL {
     
@@ -95,11 +108,12 @@ public class LEL {
 		String xTitle = "";
 		String yTitle = "";
 		try {
+		    System.out.print( "Your choice: " );
 		    graphChoice = sc.nextInt();
 		    System.out.print( "Enter a graph title: " );
 		    graphTitle = sc.next();
 		    JFrame chartFrame = new JFrame();
-		    chartFrame.setSize(100, 100);
+		    chartFrame.setSize(600, 600);
 		    chartFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    if ( graphChoice == 1 || graphChoice == 2 ) { //Bar or Line graph
 			System.out.print( "Enter a x-axis title: " );
@@ -108,9 +122,11 @@ public class LEL {
 			yTitle = sc.next();
 		    }
 		    else if ( graphChoice == 3 ) {
-			Piechart pieChart = new PieChart( graphTitle );
-			ChartPanel chart = pieChart.createChart();
-			JPanel chartPanel = new JPanel();
+			PieChart pieChart = new PieChart( graphTitle );
+			for ( String s: data )
+			    pieChart.addValue( s );
+			ChartPanel chart = pieChart.createChart( graphTitle );
+		        JPanel chartPanel = new JPanel();
 			chartPanel.setLayout(new java.awt.BorderLayout());
 			chartPanel.add(chart, BorderLayout.CENTER);
 			chartPanel.validate();
