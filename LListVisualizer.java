@@ -82,7 +82,7 @@ public class LListVisualizer<T> {
 				String tmp = new String (input);
 				add (index, (T)tmp);
 				System.out.println(toString());
-				//mod = false;
+				mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -92,7 +92,7 @@ public class LListVisualizer<T> {
 					Integer a = new Integer (tmp);
 					add (index,(T) a);
 					System.out.println(toString());
-					//mod = false;
+					mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {

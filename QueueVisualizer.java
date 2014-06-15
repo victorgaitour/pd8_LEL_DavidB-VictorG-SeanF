@@ -155,6 +155,30 @@ public class QueueVisualizer<T>{
 	    retstr+="Index: "+ lel+ "\n";
 	    return retstr;
 	}//O(?)
+	  public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < queue._queue.size(); i++) {
+	    retStr += "" + queue._queue.get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
+    }
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	    
+	}
+	}
+	
+	
     
     public class ALQueue<T>{
 
@@ -192,4 +216,5 @@ public class QueueVisualizer<T>{
 	public String toString(){
 		return _queue.toString();
 		}
-}}
+}
+}

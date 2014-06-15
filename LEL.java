@@ -252,10 +252,10 @@ public class LEL {
 		else if ( choice2 == 4 ) { //Heapdone
 
 		}
-		else if ( choice2 == 5 ) { //Stack
+		else if ( choice2 == 5 ) { //Stackdone
 
 		}
-		else if ( choice2 == 6 ) { //LList
+		else if ( choice2 == 6 ) { //LListdone
 
 		}
 		else if ( choice2 == 7 ) { //Queuedone
