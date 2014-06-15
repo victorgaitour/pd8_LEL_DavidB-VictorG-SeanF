@@ -52,6 +52,7 @@ public class QueueVisualizer<T>{
 			    if (typenum == 1) {
 				String tmp = new String (input);
 				add ((T)tmp);
+				//mod=false;
 				notvalid = false;
 			    }
 			    else {
@@ -60,6 +61,7 @@ public class QueueVisualizer<T>{
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
 					add ((T) a);
+					//mod=false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -139,7 +141,7 @@ public class QueueVisualizer<T>{
 			}
 		    }
 		    else {//for spacing in double digits
-			lel=lel+i;
+			lel=lel+i+" ";
 			while(j>=10){
 			    lel=lel+" ";
 			    j--;

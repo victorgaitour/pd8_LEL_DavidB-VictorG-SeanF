@@ -61,7 +61,7 @@ public class HeapVisualizer <T extends Comparable <T>> {
 			    if (typenum == 1) {
 				String tmp = new String (input);
 				add ((T)tmp);
-				mod = false;
+				//mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -70,7 +70,7 @@ public class HeapVisualizer <T extends Comparable <T>> {
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
 					add ((T) a);
-					mod = false;
+					//mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -111,23 +111,64 @@ public class HeapVisualizer <T extends Comparable <T>> {
     }
     public void add(T stuff){
 	heap.add(stuff);
-	System.out.println(heap);
+	System.out.println(toString());
     }
     public void delete(){
 	T tmp = heap.removeMin();
 	System.out.println ("" + tmp);
-	System.out.println(heap);
+	System.out.println(toString());
     }
     
     public void peek () {
 	System.out.println (heap.peekMin());
-	System.out.println(heap);
+	System.out.println(toString());
     }
-    public String toString(){
-	return heap.toString();
-    }
+  	public String toString()
+	{
+	    String lel="";
+	    for (int i=0; i<heap.heap.size();i++){
+		if (typenum==2) {
+		    int j = ((Integer) (heap.heap.get(i))).intValue();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j=j/10;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i+" ";
+			while(j>=10){
+			    lel=lel+" ";
+			    j=j/10;
+			}
+		    }
+		}
+		else if (typenum==1) {
+		    int j = ((String) heap.heap.get(i)).length();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j--;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i+" ";
+			while(j>=10){
+			    lel=lel+" ";
+			    j--;
+			}
+		    }
+		}
+	    }
 	
-
+	
+	    String retstr=ESC + "2J"+"Heap: " + heap.toString()+"\n";
+	    retstr+="Index: "+ lel+ "\n";
+	    return retstr;
+	}//O(?)
+    
     public class ALHeap <T extends Comparable <T>> {
 	
 	//instance vars
@@ -299,55 +340,13 @@ public class HeapVisualizer <T extends Comparable <T>> {
      *****************************************************/
 	public String toString()
 	{
-	    String lel=ESC + "2J";
-	    for (int i=0; i<heap.size();i++){
-		if (heap.get(i).getClass().equals(Integer.TYPE)) {
-		    int j = ((Integer) (heap.get(i))).intValue();
-		    if (i<10){//for spacing in single digits
-			lel=lel + i + "  ";   
-			while(j>=10){ //for spacing
-			    lel=lel+" ";
-			    j=j/10;
-			}
-		    }
-		    else {//for spacing in double digits
-			lel=lel+i;
-			while(j>=10){
-			    lel=lel+" ";
-			    j=j/10;
-			}
-		    }
-		}
-		else if (heap.get(i).getClass().equals(String.class)) {
-		    int j = ((String) heap.get(i)).length();
-		    if (i<10){//for spacing in single digits
-			lel=lel + i + "  ";   
-			while(j>=10){ //for spacing
-			    lel=lel+" ";
-			    j--;
-			}
-		    }
-		    else {//for spacing in double digits
-			lel=lel+i;
-			while(j>=10){
-			    lel=lel+" ";
-			    j--;
-			}
-		    }
-		}
-	    }
-	
-	
-	    String retstr="Heap: " + heap.toString()+"\n";
-	    retstr+="Index: "+ lel+ "\n";
-	    return retstr;
-	}//O(?)
+		return heap.toString();
     }
 
     public String Stringfy () {
 	String retStr = "";
-	for (int i = 0; i < this.heap.heap.size(); i++) {
-	    retStr += "" + this.heap.heap.get (i) + ",";
+	for (int i = 0; i < this.heap.size(); i++) {
+	    retStr += "" + this.heap.get (i) + ",";
 	}
 	//	System.out.println (retStr);
 	return retStr;
@@ -370,11 +369,6 @@ public class HeapVisualizer <T extends Comparable <T>> {
 	}
 	
     }
-    /*   public static void main (String [] args) {
-	 HeapVisualizer a = new HeapVisualizer ();
-	 Integer b = new Integer (7);
-	 a.modify ();
-	 }
-    */
+    
 
-}     
+}  }   
