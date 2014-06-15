@@ -5,7 +5,7 @@ import java.lang.Object.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ArrayVisualizer <T> {
+public class ArrayVisualizer <T> extends Visualizer<T>{
     private  T[] vis;
     private int slot;
     final static String ESC = "\033[";

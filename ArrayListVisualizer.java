@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class ArrayListVisualizer <T>{
+public class ArrayListVisualizer <T> extends Visualizer<T>{
     final static String ESC = "\033[";
     public ArrayList<T> arraylist;
     public int typenum = 0;

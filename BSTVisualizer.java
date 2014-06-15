@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class BSTVisualizer <T extends Comparable <T>>
+public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 {
     @SuppressWarnings("unchecked")
     TreeNode <T>  _root;
@@ -57,7 +57,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 				String tmp = new String (input);
 				insert ((T)tmp);
 				print (height());
-				mod = false;
+				//mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -67,7 +67,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 					Integer a = new Integer (tmp);
 					insert ((T) a);
 					print (height());
-					mod = false;
+					//mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -98,7 +98,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 				String tmp = new String (input);
 			        remove ((T)tmp);
 				print (height());
-				mod = false;
+				//mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -108,7 +108,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 					Integer a = new Integer (tmp);
 				        remove ((T) a);
 					print (height());
-					mod = false;
+					//mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -133,17 +133,17 @@ public class BSTVisualizer <T extends Comparable <T>>
 			    if (choice2 == 1) {
 				postOrderTrav();
 				nottrav = false;
-				mod = false;
+				//mod = false;
 			    }
 			    else if (choice2 == 2) {
 				preOrderTrav ();
 				nottrav = false;
-				mod = false;
+				//mod = false;
 			    }
 			    else if (choice2 == 3) {
 				inOrderTrav ();
 				nottrav = false;
-				mod = false;
+				//mod = false;
 			    } 
 			}
 			catch (Exception e) {

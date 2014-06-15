@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class StackVisualizer <T> {
+public class StackVisualizer <T> extends Visualizer<T>{
     public  ArrayList <T> vis;
     private int top;
     final static String ESC = "\033[";

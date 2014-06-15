@@ -7,7 +7,7 @@ import java.util.*;
 import java.awt.*;
 
 
-public class LListVisualizer<T> { 
+public class LListVisualizer<T> extends Visualizer<T>{ 
     public Scanner sc;
     private DLLNode<T> _head, _tail; //pointers to first and last nodes
     private int _size;

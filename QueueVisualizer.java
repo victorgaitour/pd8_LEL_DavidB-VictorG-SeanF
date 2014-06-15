@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 import java.lang.*;
-public class QueueVisualizer<T>{
+public class QueueVisualizer<T> extends Visualizer<T>{
     private ALQueue<T> queue;
     private String ESC="\033[";
     Scanner sc;

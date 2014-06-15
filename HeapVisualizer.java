@@ -5,7 +5,7 @@ import java.io.*;
 
 //this is a minheap
 
-public class HeapVisualizer <T extends Comparable <T>> {
+public class HeapVisualizer <T extends Comparable <T>> extends Visualizer<T>{
     final static String ESC = "\033[";
     public ALHeap <T> heap;
     public int typenum = 0;
