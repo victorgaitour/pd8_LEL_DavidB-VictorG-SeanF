@@ -297,10 +297,10 @@ public class ArrayListVisualizer <T>{
     /*   public static void main (String [] args) {
 	 ArrayListVisualizer <String> a = new ArrayListVisualizer <String> ();
 	 String b = new String ("s");
-	a.add (0,b);
-	System.out.println(a.Stringfy());
-	a.modify ();
-    }
+	 a.add (0,b);
+	 System.out.println(a.Stringfy());
+	 a.modify ();
+	 }
     */
 }
 
