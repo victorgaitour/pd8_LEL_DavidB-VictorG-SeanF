@@ -48,7 +48,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 		choice = Integer.parseInt(cho);
 		int index = -1;
 		if (choice == 1) {
-		    System.out.println ("\n Insert what value:");
+		    System.out.println ("\nInsert what value:");
 		    boolean notvalid = true;
 		    while (notvalid) {
 			try {
@@ -418,9 +418,13 @@ public class BSTVisualizer <T extends Comparable <T>>
 
     public void print(int depth) {
 	for (int i = 1; i <= depth; i++) {
+	    String space = "";
+	    int tmp = height () - i;
+	    for (int j = tmp; j > 0; j --) 
+		space += " ";
 	    System.out.print("Level " + (i-1) + ": ");
 	    String levelNodes = printLevel(_root, i);
-	    System.out.print(levelNodes + "\n");		
+	    System.out.print(space + levelNodes + "\n");		
 	}
     }
 
@@ -428,54 +432,54 @@ public class BSTVisualizer <T extends Comparable <T>>
 	
     //helper for print
     public String printLevel(TreeNode <T> tree, int level) {
-	String space = "";
-	int tmp = height () - level;
-	for (int i = tmp; i > 0; i --) 
-	    space += " ";
 	if (tree == null) {
-	    return "";
+	    return " ";
 	}
 	if (level == 1) {
 	    if (tree.getValue() == null)
-		return null + " ";
+		return " " + null;
 	    else
-		return tree.getValue() + " ";
+		return " " + tree.getValue();
 	} else if (level > 1) {
 	    String leftStr = printLevel(tree.getLeft(), level - 1);
 	    String rightStr = printLevel(tree.getRight(), level - 1);
-	    return space + leftStr + rightStr;
+	    if (leftStr ==  " " || leftStr == "")
+		leftStr = "  ";
+	    return leftStr + rightStr;
 	}
 	else 
 	    return "";
     }
 
     public String printLevelCommas(TreeNode <T> tree, int level) {
-	String space = "";
-	int tmp = height () - level;
-	for (int i = tmp; i > 0; i --) 
-	    space += ",";
 	if (tree == null) {
-	    return "";
+	    return ",";
 	}
 	if (level == 1) {
 	    if (tree.getValue() == null)
-		return null + ",";
+		return "," + null + ",";
 	    else
-		return tree.getValue() + ",";
+		return "," +  tree.getValue() + ",";
 	} else if (level > 1) {
 	    String leftStr = printLevel(tree.getLeft(), level - 1);
 	    String rightStr = printLevel(tree.getRight(), level - 1);
-	    return space + leftStr + rightStr + "\n";
+	    if (leftStr ==  " " || leftStr == "")
+		leftStr = ",";
+	    return "," + leftStr + ", ," +  rightStr + "," ;
 	}
 	else 
-	    return "";
+	    return ", ,";
     }
 
 
     public String Stringfy () {
 	String retStr = "";
 	for (int i = 1; i <= height(); i++) {
-	    retStr += printLevelCommas(_root, i);
+	    String space = "";
+	    int tmp = height () - i;
+	    for (int j = tmp; j > 0; j --) 
+		space += ",";
+	    retStr =  retStr + space +  printLevelCommas(_root, i)  + "\n";
 	}
 	return retStr;
     }
@@ -496,23 +500,28 @@ public class BSTVisualizer <T extends Comparable <T>>
 	} 
     }
 
-    /*  //main method for testing
+    /*    //main method for testing
     @SuppressWarnings ("unchecked")
-    public static void main( String[] args ) {
+	public static void main( String[] args ) {
 	BSTVisualizer test = new BSTVisualizer ();
 	Integer a = new Integer (10);
 	Integer b = new Integer (11);
 	//test.insert(a);
 	//test.insert (b);
 	String s = new String ("ssds");
-	test.insert (s);
+	//	test.insert (s);
 	int h = test.height ();
 	test.print(h);
 	test.preOrderTrav();
 	test.modify ();
+	test.modify ();
+	test.modify ();
+	test.modify ();
+	System.out.println (test.Stringfy());
 	h = test.height ();
+	test.writeCSV ("test.csv");
 	test.print(h);
-    }
-    */
+	} */
+    
 
 }//end class

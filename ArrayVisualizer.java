@@ -52,7 +52,7 @@ public class ArrayVisualizer <T> {
 	boolean mod = true;
 	int choice;
 	while (mod){
-	    System.out.println ("Would you like to: \n1)Add an element \n2)Remove an index \n3)Set an index \n4)Get an index");
+	    System.out.println ("\nWould you like to: \n1)Add an element \n2)Remove an index \n3)Set an index \n4)Get an index");
 
 	    try {
 		String cho = sc.next();
@@ -332,13 +332,13 @@ public class ArrayVisualizer <T> {
 	} 
     }
 
-    // public static void main (String [] args) {
-    //	ArrayVisualizer test = new ArrayVisualizer (5);
-    //	Integer a = new Integer (10);
-    //  test.add (0, a);
-    //	System.out.println(test.Stringfy().toCharArray());
-    //	test.modify ();
-    //	}
+    /*public static void main (String [] args) {
+    	ArrayVisualizer test = new ArrayVisualizer (5);
+	Integer a = new Integer (10);
+	test.add (0, a);
+   	System.out.println(test.Stringfy().toCharArray());
+    	test.modify ();
+	}*/
     
 }
 	    
