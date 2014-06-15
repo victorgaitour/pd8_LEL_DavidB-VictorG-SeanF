@@ -3,7 +3,6 @@ public class Visualizer<T>{
     
     public void add(T stuff){}
     //most of the visualizers have their own add methods
-    public boolean add(T stuff){}
     public void delete(){}
     //all the visualizers have their own delete methods
     public void insert(T stuff){}
