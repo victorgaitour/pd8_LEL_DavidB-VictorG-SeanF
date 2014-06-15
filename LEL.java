@@ -274,18 +274,147 @@ public class LEL {
 
 		}
 		else if ( choice2 == 3 ) { //BST
-
+		    BSTVisualizer BST = new BSTVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				BST.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				BST.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("BST", BST.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (BST.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}
+		    }	
 		}
 		else if ( choice2 == 4 ) { //Heap
+		    HeapVisualizer heap = new HeapVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				heap.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				heap.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("Heap", heap.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (heap.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}
+		    }	
 
 		}
 		else if ( choice2 == 5 ) { //Stack
+		    StackVisualizer stack = new StackVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				stack.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				stack.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("Stack", stack.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (stack.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}	
 
+		    }
 		}
 		else if ( choice2 == 6 ) { //LList
+		    LListVisualizer LL = new LListVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				LL.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				LL.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("LList", LL.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (LL.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}	
+		    }
 
 		}
 		else if ( choice2 == 7 ) { //Queue
+		    QueueVisualizer Que = new QueueVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				Que.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				Que.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("Queue", Que.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (Que.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}	
+		    }
 
 		}
 		else if ( choice2 == 8 ) { //Graph

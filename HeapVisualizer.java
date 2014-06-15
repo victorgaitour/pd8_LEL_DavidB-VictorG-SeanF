@@ -338,21 +338,23 @@ public class HeapVisualizer <T extends Comparable <T>> {
      * a) a level-order traversal of the tree (simple version)
      * b) ASCII representation of the tree (bit more complicated, much more fun)
      *****************************************************/
+    
 	public String toString()
 	{
 		return heap.toString();
+	}
     }
 
     public String Stringfy () {
 	String retStr = "";
-	for (int i = 0; i < this.heap.size(); i++) {
-	    retStr += "" + this.heap.get (i) + ",";
+	for (int i = 0; i < this.heap.heap.size(); i++) {
+	    retStr += "" + this.heap.heap.get (i) + ",";
 	}
 	//	System.out.println (retStr);
 	return retStr;
     }
 
-	
+
 	
     public void writeCSV (String FileName) {
 	try{
@@ -370,5 +372,5 @@ public class HeapVisualizer <T extends Comparable <T>> {
 	
     }
     
-
-}  }   
+} 
+  
