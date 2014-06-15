@@ -81,7 +81,8 @@ public class LListVisualizer<T> {
 			    if (typenum == 1) {
 				String tmp = new String (input);
 				add (index, (T)tmp);
-				mod = false;
+				System.out.println(toString());
+				//mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -90,7 +91,8 @@ public class LListVisualizer<T> {
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
 					add (index,(T) a);
-					mod = false;
+					System.out.println(toString());
+					//mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -124,6 +126,7 @@ public class LListVisualizer<T> {
 			}
 		    }
 		    remove (index);
+		    System.out.println(toString());
 		    mod = false;
 		}
 		else if (choice == 3) {
@@ -149,6 +152,7 @@ public class LListVisualizer<T> {
 			    String input = sc.next();
 			    if (typenum == 1) {
 				set (index, (T) input);
+				System.out.println(toString());
 				mod = false;
 				notvalid = false;
 			    }
@@ -158,6 +162,7 @@ public class LListVisualizer<T> {
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
 					add (index,(T) a);
+					System.out.println(toString());
 					mod = false;
 					notvalid = false;
 				    }
@@ -192,6 +197,7 @@ public class LListVisualizer<T> {
 			}
 		    }
 		    get(index);
+		    System.out.println(toString());
 		    mod = false;
 		}
 		else {
@@ -424,14 +430,23 @@ public class LListVisualizer<T> {
 
 
 
-    public String print() { 
+    public String toString() { 
+	    
 	String retStr = "|";
-	DLLNode<T> tmp = _head; //init tr
-	while( tmp != null ) {
+	if (size()==1){
+	    retStr+=_head.getCargo()+"|.|->|NULL|";
+	    return retStr;
+	    }
+	else{
+	    DLLNode<T> tmp = _head; //init tr
+	    int i=size();
+	    while( i>1 ) {
 	    retStr += tmp.getCargo() + "|.| -> |";
 	    tmp = tmp.getNext();
+	    i--;
 	}
 	retStr += "NULL|";
+	}
 	return retStr;
     }
 
