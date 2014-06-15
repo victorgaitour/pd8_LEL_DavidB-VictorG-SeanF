@@ -1,7 +1,7 @@
 public class Queue{
     public static void main (String args[]){
 	//test for Queue
-	QueueVisualizer stuff= new QueueVisualizer();
+	QueueVisualizer<Integer> stuff= new QueueVisualizer<Integer>();
 	stuff.add(1);
 	stuff.add(2);
 	stuff.add(3);
@@ -20,6 +20,8 @@ public class Queue{
 	stuff.add(15);
 	stuff.add(515);
 	stuff.add(515);
+	stuff.delete();
+	stuff.delete();stuff.delete();stuff.delete();stuff.delete();stuff.delete();stuff.delete();stuff.delete();
 
 	/*//test for ArrayList
 	ArrayListVisualizer stuff= new ArrayListVisualizer();
