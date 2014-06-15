@@ -1,23 +1,124 @@
 import java.util.ArrayList;
+import java.util.*;
+import java.lang.*;
 
-public class HeapVisualizer{
+//this is a minheap
+
+public class HeapVisualizer <T extends Comparable <T>> {
     final static String ESC = "\033[";
-    private ALHeap heap;
-    public HeapVisualizer(ArrayList<Integer> lel){
-	heap=new ALHeap();
-	for (int s : lel){
-	    heap.add(s);
+    private ALHeap <T> heap;
+    public int typenum = 0;
+    public String type = "";
+    Scanner sc;
+
+    public HeapVisualizer(){
+	heap=new ALHeap <T> ();
+   	sc = new Scanner(System.in);
+	System.out.println( "Which Data Type: \nString \nInteger\n" );
+	while (type.equals("")) {
+	    try {
+		type = sc.next();
+		if (type.equals ("String") || type.equals ("string")) {
+		    typenum = 1;
+		}
+		else if (type.equals("Integer") || type.equals("integer")) {
+		    typenum = 2;
+		}
+		else {
+		    type = "";
+		    System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );
+		}
+	    }
+
+
+	    catch (Exception e) {
+		type = "";
+		System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );
+	    }
 	}
     }
-    public HeapVisualizer(){
-	heap=new ALHeap();
+
+
+   
+    public void modify () {
+	boolean mod = true;
+	int choice;
+	while (mod){
+	    System.out.println ("Would you like to: \n1)Add a value \n2)Remove Min \n3)Peek Min");
+	    try {
+		String cho = sc.next();
+		choice = Integer.parseInt(cho);
+		int index = -1;
+		if (choice == 1) {
+
+		    System.out.println ("\n Add what value:");
+		    boolean notvalid = true;
+		    while (notvalid) {
+			try {
+			    String input = sc.next();
+			    if (typenum == 1) {
+				String tmp = new String (input);
+				add ((T)tmp);
+				mod = false;
+				notvalid = false;
+			    }
+			    else {
+				while (notvalid) {
+				    try{
+					int tmp = Integer.parseInt (input);
+					Integer a = new Integer (tmp);
+					add ((T) a);
+					mod = false;
+					notvalid = false;
+				    }
+				    catch (Exception e) {
+					System.out.println( "ERROR: Please input valid Integer" );
+					input = sc.next();
+				    }
+				}
+			    }
+
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input the correct data type" );
+			}
+		    }
+		}
+
+
+		else if (choice == 2) {
+		    System.out.println ("Removing Min:");
+		    delete();
+		}
+		else if (choice == 3) {
+		    System.out.println ("Peeking at Min:");
+		    peek();
+		}
+		else {
+		    System.out.println( "ERROR: Please input a valid choice" );
+		}
+
+
+	    }
+	    catch (Exception e) {
+		System.out.println( "ERROR: Please input a valid int" );
+	    }
+	}
+    
+
     }
-    public void add(int stuff){
+    public void add(T stuff){
 	heap.add(stuff);
 	System.out.println(heap);
     }
     public void delete(){
-	heap.removeMin();
+	T tmp = heap.removeMin();
+	System.out.println ("" + tmp);
+	System.out.println(heap);
+    }
+    
+    public void peek () {
+	System.out.println (heap.peekMin());
 	System.out.println(heap);
     }
     public String toString(){
@@ -25,10 +126,10 @@ public class HeapVisualizer{
     }
 	
 
-    public class ALHeap {
+    public class ALHeap <T extends Comparable <T>> {
 	
 	//instance vars
-	private ArrayList<Integer> heap; //underlying container
+	private ArrayList<T> heap; //underlying container
     
 	
 	/*****************************************************
@@ -36,8 +137,7 @@ public class HeapVisualizer{
 	 *****************************************************/
 	public ALHeap()
 	{
-	    heap= new ArrayList<Integer>();
-	    // /*** YOUR IMPLEMENTATION HERE ***/
+	    heap= new ArrayList<T>();
 	}//O(1)
 	
 	
@@ -51,7 +151,6 @@ public class HeapVisualizer{
 	    if (heap.size()==0)
 		return true;
 	    return false;
-	    // /*** YOUR IMPLEMENTATION HERE ***/
 	}//O(1)
 	
 	/*****************************************************
@@ -59,7 +158,7 @@ public class HeapVisualizer{
 	 * Inserts an element in the heap
 	 * Postcondition: Tree maintains heap property.
 	 *****************************************************/
-	public void add( int addVal )
+	public void add( T addVal )
 	{
 	    if (isEmpty()){
 		heap.add(addVal);
@@ -69,7 +168,7 @@ public class HeapVisualizer{
 		heap.add(addVal);
 		int childIn=heap.size()-1;
 		int parentIn=getParent(childIn);
-		while (heap.get(childIn)<heap.get(parentIn)){
+		while (heap.get(childIn).compareTo(heap.get(parentIn)) < 0 ){
 		    swap(childIn,parentIn);
 		    childIn=parentIn;
 		    parentIn=getParent(parentIn);
@@ -88,7 +187,7 @@ public class HeapVisualizer{
 	 * Returns min value in heap
 	 * Postcondition: Heap remains unchanged.
 	 *****************************************************/
-	public int peekMin()
+	public T peekMin()
 	{
 	    return heap.get(0);
 	    // /*** YOUR IMPLEMENTATION HERE ***/
@@ -101,15 +200,16 @@ public class HeapVisualizer{
 	 * Removes and returns least element in heap.
 	 * Postcondition: Tree maintains heap property.
 	 *****************************************************/
-	public int removeMin()
-	{	if ( heap.size() == 0 )
-		return 0;
+	public T removeMin()
+	{	
+	    if ( heap.size() == 0 )
+		return null;
 	    
 	    //store root value for return at end of fxn
-	    Integer retVal = peekMin();
+	    T retVal = peekMin();
 	    
 	    //store val about to be swapped into root
-	    Integer foo = heap.get( heap.size() - 1);
+	    T foo = heap.get( heap.size() - 1);
 	    
 	    //swap last (rightmost, deepest) leaf with root
 	    swap( 0, heap.size() - 1 );
@@ -169,7 +269,7 @@ public class HeapVisualizer{
 	//~~~~~~~~~~~~~~~v~ MISC HELPERS ~v~~~~~~~~~~~~~~~
 	
 	private void swap ( int pos1, int pos2){
-	    int stuff = heap.get(pos1);
+	    T stuff = heap.get(pos1);
 	    heap.set(pos1,heap.get(pos2));
 	    heap.set(pos2,stuff);
 	}
@@ -199,27 +299,52 @@ public class HeapVisualizer{
 	{
 	    String lel=ESC + "2J";
 	    for (int i=0; i<heap.size();i++){
-		if (i<10){//for spacing in single digits
-		    lel=lel + i + "  ";
-		    int j=heap.get(i);
-		    while(j>=10){ //for spacing
-			lel=lel+" ";
-			j=j/10;
+		if (heap.get(i).getClass().equals(Integer.TYPE)) {
+		    int j = ((Integer) (heap.get(i))).intValue();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j=j/10;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i;
+			while(j>=10){
+			    lel=lel+" ";
+			    j=j/10;
+			}
 		    }
 		}
-		else {//for spacing in double digits
-		    lel=lel+i;
-		    int j=heap.get(i);
-		    while(j>=10){
-			lel=lel+" ";
-			j=j/10;
+		else if (heap.get(i).getClass().equals(String.class)) {
+		    int j = ((String) heap.get(i)).length();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j--;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i;
+			while(j>=10){
+			    lel=lel+" ";
+			    j--;
+			}
 		    }
 		}
 	    }
+	
 	
 	    String retstr="Heap: " + heap.toString()+"\n";
 	    retstr+="Index: "+ lel+ "\n";
 	    return retstr;
 	}//O(?)
     }
-}    
+    /*   public static void main (String [] args) {
+	HeapVisualizer a = new HeapVisualizer ();
+	Integer b = new Integer (7);
+	a.modify ();
+    }
+    */
+}     
