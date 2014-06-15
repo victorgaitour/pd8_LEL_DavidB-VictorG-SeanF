@@ -2,6 +2,8 @@ import java.util.*;
 import java.lang.*;
 import java.lang.reflect.Array;
 import java.lang.Object.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ArrayVisualizer <T> {
     private  T[] vis;
@@ -227,7 +229,7 @@ public class ArrayVisualizer <T> {
 	if (vis [vis.length - 1] == null)  
 	    System.out.print ( " ]");
 	else
-	    System.out.print ( vis [vis.length - 1] + " ]");
+	    System.out.print ( vis [vis.length - 1] + " ]\n");
     }
 
     public void add (int index, T stuff) {
@@ -257,7 +259,7 @@ public class ArrayVisualizer <T> {
 	}
     }
     
-    public void insert (int index,  T stuff) {
+    /*    public void insert (int index,  T stuff) {
 	try{
 
 	    vis [index] = stuff;
@@ -267,7 +269,7 @@ public class ArrayVisualizer <T> {
 	catch (Exception e) {
 	    System.out.println (e.getMessage());
 	}
-    }
+	} */ 
    
     public T delete (int index) {
 	try{
@@ -305,13 +307,38 @@ public class ArrayVisualizer <T> {
        
     }
 
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < size; i++) {
+	    retStr += "" + get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
+    }
 
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+		FileWriter writer = new FileWriter(FileName);
+		for (char ch: this.Stringfy().toCharArray()) {
+		    writer.append (ch);
+		}
+		writer.flush();
+		writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	} 
+    }
 
-    /*    public static void main (String [] args) {
-	ArrayVisualizer test = new ArrayVisualizer (5);
-	Integer a = new Integer (10);
-	test.modify ();
-	}*/
+    // public static void main (String [] args) {
+    //	ArrayVisualizer test = new ArrayVisualizer (5);
+    //	Integer a = new Integer (10);
+    //  test.add (0, a);
+    //	System.out.println(test.Stringfy().toCharArray());
+    //	test.modify ();
+    //	}
     
 }
 	    

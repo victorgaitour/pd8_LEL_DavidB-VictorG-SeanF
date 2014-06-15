@@ -435,7 +435,32 @@ public class LListVisualizer<T> {
 	return retStr;
     }
 
-  /*  public static void main (String [] args) {
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < this.size(); i++) {
+	    retStr += "" + this.get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
+    }
+
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	} 
+    }
+
+    /*  public static void main (String [] args) {
 	LListVisualizer <String> a = new LListVisualizer <String> ();
 	String b = new String ("s");
 	a.add (b);

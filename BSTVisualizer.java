@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 public class BSTVisualizer <T extends Comparable <T>>
 {
@@ -448,6 +449,52 @@ public class BSTVisualizer <T extends Comparable <T>>
 	    return "";
     }
 
+    public String printLevelCommas(TreeNode <T> tree, int level) {
+	String space = "";
+	int tmp = height () - level;
+	for (int i = tmp; i > 0; i --) 
+	    space += ",";
+	if (tree == null) {
+	    return "";
+	}
+	if (level == 1) {
+	    if (tree.getValue() == null)
+		return null + ",";
+	    else
+		return tree.getValue() + ",";
+	} else if (level > 1) {
+	    String leftStr = printLevel(tree.getLeft(), level - 1);
+	    String rightStr = printLevel(tree.getRight(), level - 1);
+	    return space + leftStr + rightStr + "\n";
+	}
+	else 
+	    return "";
+    }
+
+
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 1; i <= height(); i++) {
+	    retStr += printLevelCommas(_root, i);
+	}
+	return retStr;
+    }
+
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	} 
+    }
 
     /*  //main method for testing
     @SuppressWarnings ("unchecked")

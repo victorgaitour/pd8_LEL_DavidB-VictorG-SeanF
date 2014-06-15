@@ -1,8 +1,9 @@
 import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 public class StackVisualizer <T> {
-    private  ArrayList <T> vis;
+    public  ArrayList <T> vis;
     private int top;
     final static String ESC = "\033[";
     public int typenum = 0;
@@ -143,6 +144,32 @@ public class StackVisualizer <T> {
 	    System.out.println (e.getMessage() + ": Stack is empty");
 	    return null;
 	}
+    }
+
+
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < this.vis.size(); i++) {
+	    retStr += "" + this.vis.get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
+    }
+
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	} 
     }
     /*    public static void main (String [] args) {
 	StackVisualizer a = new StackVisualizer ();

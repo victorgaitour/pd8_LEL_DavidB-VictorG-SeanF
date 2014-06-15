@@ -3,7 +3,7 @@ import java.io.*;
 
 public class ArrayListVisualizer <T>{
     final static String ESC = "\033[";
-    private ArrayList<T> arraylist;
+    public ArrayList<T> arraylist;
     public int typenum = 0;
     public String type = "";
     Scanner sc;
@@ -267,13 +267,40 @@ public class ArrayListVisualizer <T>{
 	retstr+="Index:      "+ lel+ "\n";
 	return retstr;
     }
-
-    public static void main (String [] args) {
-	ArrayListVisualizer <String> a = new ArrayListVisualizer <String> ();
-	String b = new String ("s");
-	a.add (0,b);
-	a.modify ();
+    
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < this.arraylist.size(); i++) {
+	    retStr += "" + this.arraylist.get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
     }
 
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	} 
+    }
+
+
+    /*   public static void main (String [] args) {
+	 ArrayListVisualizer <String> a = new ArrayListVisualizer <String> ();
+	 String b = new String ("s");
+	a.add (0,b);
+	System.out.println(a.Stringfy());
+	a.modify ();
+    }
+    */
 }
 

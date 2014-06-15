@@ -1,15 +1,17 @@
 import java.util.ArrayList;
 import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 //this is a minheap
 
 public class HeapVisualizer <T extends Comparable <T>> {
     final static String ESC = "\033[";
-    private ALHeap <T> heap;
+    public ALHeap <T> heap;
     public int typenum = 0;
     public String type = "";
     Scanner sc;
+    
 
     public HeapVisualizer(){
 	heap=new ALHeap <T> ();
@@ -129,7 +131,7 @@ public class HeapVisualizer <T extends Comparable <T>> {
     public class ALHeap <T extends Comparable <T>> {
 	
 	//instance vars
-	private ArrayList<T> heap; //underlying container
+	public ArrayList<T> heap; //underlying container
     
 	
 	/*****************************************************
@@ -340,6 +342,33 @@ public class HeapVisualizer <T extends Comparable <T>> {
 	    retstr+="Index: "+ lel+ "\n";
 	    return retstr;
 	}//O(?)
+    }
+
+    public String Stringfy () {
+	String retStr = "";
+	for (int i = 0; i < this.heap.heap.size(); i++) {
+	    retStr += "" + this.heap.heap.get (i) + ",";
+	}
+	//	System.out.println (retStr);
+	return retStr;
+    }
+
+	
+	
+    public void writeCSV (String FileName) {
+	try{
+	    FileWriter writer = new FileWriter(FileName);
+	    for (char ch: this.Stringfy().toCharArray()) {
+		writer.append (ch);
+	    }
+	    writer.flush();
+	    writer.close();
+	}
+	catch(IOException e){
+	    System.out.println ("Error: Conversion error");
+	    
+	}
+	
     }
     /*   public static void main (String [] args) {
 	 HeapVisualizer a = new HeapVisualizer ();
