@@ -342,9 +342,10 @@ public class HeapVisualizer <T extends Comparable <T>> {
 	}//O(?)
     }
     /*   public static void main (String [] args) {
-	HeapVisualizer a = new HeapVisualizer ();
-	Integer b = new Integer (7);
-	a.modify ();
-    }
+	 HeapVisualizer a = new HeapVisualizer ();
+	 Integer b = new Integer (7);
+	 a.modify ();
+	 }
     */
+
 }     
