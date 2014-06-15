@@ -48,7 +48,7 @@ public class LEL {
 		}
 	    }
 	    else if ( choice1 == 2 ) {
-		System.out.print( "Enter your data (separated by commas, NO SPACES): " );
+		System.out.print( "Enter your data (FORMAT: Label1:1,Label2:2 (NO SPACES)) : " );
 		inputData = sc.next();
 	    }
 	    else
@@ -73,6 +73,7 @@ public class LEL {
 	    //System.out.println( data );
 	}
 
+	System.out.println( "data: " + data );
 	//^^^ENTERING DATA CODE^^^
 	
 	System.out.println( "What kind of data structure do you want to visualize?\n1: Array\n2: ArrayList\n3: Binary Search Tree\n4: Heap\n5: Stack\n6: Linked List\n7: Queue\n8: Graph" );
@@ -112,32 +113,41 @@ public class LEL {
 		    graphChoice = sc.nextInt();
 		    System.out.print( "Enter a graph title: " );
 		    graphTitle = sc.next();
+
 		    JFrame chartFrame = new JFrame();
 		    chartFrame.setSize(600, 600);
 		    chartFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		    JPanel chartPanel = new JPanel();
+		    chartPanel.setLayout(new java.awt.BorderLayout());
+
 		    if ( graphChoice == 1 || graphChoice == 2 ) { //Bar or Line graph
 			System.out.print( "Enter a x-axis title: " );
 			xTitle = sc.next();
 			System.out.print( "Enter a y-axis title: " );
 			yTitle = sc.next();
+
+			BarGraph barGraph = new BarGraph( graphTitle, xTitle, yTitle );
+			for ( String s: data )
+			    barGraph.addValue( s );
+			ChartPanel chart = barGraph.createBarGraph();
+			chartPanel.add(chart, BorderLayout.CENTER);
 		    }
 		    else if ( graphChoice == 3 ) {
 			PieChart pieChart = new PieChart( graphTitle );
 			for ( String s: data )
 			    pieChart.addValue( s );
-			ChartPanel chart = pieChart.createChart( graphTitle );
-		        JPanel chartPanel = new JPanel();
-			chartPanel.setLayout(new java.awt.BorderLayout());
+			ChartPanel chart = pieChart.createChart();
 			chartPanel.add(chart, BorderLayout.CENTER);
-			chartPanel.validate();
-			chartFrame.add( chartPanel );
-			chartFrame.setVisible( true );
 		    }
 		    else if ( graphChoice != 3 )
 			System.out.println( "ERROR: Please enter a valid int" );
+		    chartPanel.validate();
+		    chartFrame.add( chartPanel );
+		    chartFrame.setVisible( true );
 		}
 		catch ( Exception e ) {
-		    System.out.println( "ERROR: Please input a valid int" );
+		    System.out.println( "!ERROR: Please input a valid int" );
 		}
 	    }
 	    else

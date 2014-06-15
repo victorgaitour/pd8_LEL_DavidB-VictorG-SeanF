@@ -2,7 +2,6 @@
 import org.jfree.chart.*;
 import org.jfree.data.*;
 import org.jfree.data.general.*;
-import org.jfree.chart.plot.*;
 import javax.swing.*;
 
 /************************************
@@ -24,16 +23,16 @@ public class PieChart extends JFrame {
     }
 
     public void addValue( String s ) {
-	data.setValue( s, Integer.parseInt(s) );
+	data.setValue( s, Integer.parseInt( s.substring( s.indexOf(":")+1, s.length() ) ) );
     }
 
-    public ChartPanel createChart( String s ) {
+    public ChartPanel createChart() {
 	System.out.println( "Creating chart..." );
-	PiePlot plot = new PiePlot( data );
+	//PiePlot plot = new PiePlot( data );
 	//plot.setLabelFont( new Font("SansSerif", Font.PLAIN, 12) );
-	plot.setNoDataMessage("No data available");
-	plot.setLabelGap(0.02);
-	JFreeChart chartFree = ChartFactory.createPieChart( s, data, true, true, false );
+	//plot.setNoDataMessage("No data available");
+	//plot.setLabelGap(0.02);
+	JFreeChart chartFree = ChartFactory.createPieChart( title, data, true, true, false );
 	ChartPanel chart = new ChartPanel(chartFree);
 	return chart;
     }
