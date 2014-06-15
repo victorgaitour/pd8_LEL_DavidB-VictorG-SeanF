@@ -223,10 +223,10 @@ public class ArrayListVisualizer <T>{
     }
     public String toString()
     {
-	String lel=ESC + "2J";
+	String lel="";
 	String retstr= "";
 	for (int i=0; i<arraylist.size();i++){
-	    if (arraylist.get(i).getClass().equals(Integer.TYPE)) {
+	    if (typenum==2) {
 		int j = ((Integer) (arraylist.get(i))).intValue();
 		if (i<10){//for spacing in single digits
 		    lel=lel + i + "  ";   
@@ -236,14 +236,14 @@ public class ArrayListVisualizer <T>{
 		    }
 		}
 		else {//for spacing in double digits
-		    lel=lel+i;
+		    lel=lel+i+" ";
 		    while(j>=10){
 			lel=lel+" ";
 			j=j/10;
 		    }
 		}
 	    }
-	    else if (arraylist.get(i).getClass().equals(String.class)) {
+	    else if (typenum==1) {
 		int j = ((String) arraylist.get(i)).length();
 		if (i<10){//for spacing in single digits
 		    lel=lel + i + "  ";   
@@ -253,7 +253,7 @@ public class ArrayListVisualizer <T>{
 		    }
 		}
 		else {//for spacing in double digits
-		    lel=lel+i;
+		    lel=lel+i+" ";
 		    while(j>=10){
 			lel=lel+" ";
 			j--;
@@ -263,7 +263,7 @@ public class ArrayListVisualizer <T>{
 	}
 
 	 
-	retstr+="Arraylist: " + arraylist.toString()+"\n";
+	retstr+=ESC + "2J"+"Arraylist: " + arraylist.toString()+"\n";
 	retstr+="Index:      "+ lel+ "\n";
 	return retstr;
     }

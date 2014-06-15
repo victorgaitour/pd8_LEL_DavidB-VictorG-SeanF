@@ -1,7 +1,7 @@
 public class Queue{
     public static void main (String args[]){
 	//test for Queue
-	HeapVisualizer<Integer> stuff= new HeapVisualizer<Integer>();
+	ArrayListVisualizer<Integer> stuff= new ArrayListVisualizer<Integer>();
 	stuff.modify();
 	
 	/*

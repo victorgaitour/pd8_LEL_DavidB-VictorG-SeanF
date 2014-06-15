@@ -246,10 +246,10 @@ public class LEL {
 		else if ( choice2 == 2 ) { //ArrayList
 
 		}
-		else if ( choice2 == 3 ) { //BST
+		else if ( choice2 == 3 ) { //BSTdone
 
 		}
-		else if ( choice2 == 4 ) { //Heap
+		else if ( choice2 == 4 ) { //Heapdone
 
 		}
 		else if ( choice2 == 5 ) { //Stack
@@ -258,7 +258,7 @@ public class LEL {
 		else if ( choice2 == 6 ) { //LList
 
 		}
-		else if ( choice2 == 7 ) { //Queue
+		else if ( choice2 == 7 ) { //Queuedone
 
 		}
 		else if ( choice2 == 8 ) { //Graph
