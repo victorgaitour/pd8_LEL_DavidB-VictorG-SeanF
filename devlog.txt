@@ -20,3 +20,17 @@ Driver can now read in files-SF
 
 6/4/14
 Finished reworking ArrayListVisualizer, started working on QueueVisualizer-VG
+Editted StackVisualizer alittle more to fine tune it, started BST - DB.
+Started using jfreechart. Looked at jfreechart api. -SF
+
+6/12/14
+Worked on BST, made it work with generic, started on toString algorithm, tested compiling - DB
+Modelled PieChart and Graph, tested it out -SF
+
+6/14/14
+Piechart works now, special way to compile it -SF
+Finished BSTVisualizer, making LListVisualizer -DB
+
+6/15/14
+Finished up LListVisualizer, StackVis, HeapVis, ArrayListVis, added modify method for terminal interaction and csv convertor method and made basic gui -DB
+Finished QueueVis, StackVis, editted LListVis, modified toString method to print -VG
