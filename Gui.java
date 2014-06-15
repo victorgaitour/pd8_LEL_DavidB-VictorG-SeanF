@@ -5,27 +5,12 @@ import java.awt.event.*;
 
 
 public class Gui implements ActionListener{
-    private String structure= "";
     private String type = "";
     JTextField textfield;
     private JTextPane[][] display = new JTextPane [10] [10]; 
 
     public Gui () {
-	try{
-	    JOptionPane pane = new JOptionPane ();
-	    Object[] datastruc = {"Array", "ArrayList", "BST", "Heap", "Stack", "LList"};
-	    structure = (String)pane.showInputDialog(null, "Choose a Data Structure", "Data Structure Selection Menu",JOptionPane.QUESTION_MESSAGE, null, datastruc,"Array");
 
-	    JOptionPane pane2 = new JOptionPane ();
-	    Object[] datatypes = {"String"};
-	    String type = (String)pane2.showInputDialog(null, "Choose a Data Type/Value", "Data Type/Value Selection Menu",JOptionPane.QUESTION_MESSAGE, null, datatypes,"String");
-	    
-	    if (type == "" || structure == "") 
-		System.exit (0);
-	}
-	catch (Exception e) {
-	    System.exit (0);
-	}
 
 	JFrame guiFrame = new JFrame();
 	//sets up interface

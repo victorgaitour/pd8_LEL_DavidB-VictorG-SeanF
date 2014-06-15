@@ -233,7 +233,7 @@ public class LEL {
 				array.print();
 			    }
 			    else if (choice4 == 5) {
-				break;
+				System.exit(0); 
 			    }
 			}
 			catch (Exception e) {
@@ -243,22 +243,22 @@ public class LEL {
 		    }
 		}
 	    
-		else if ( choice2 == 2 ) { //ArrayListdone
+		else if ( choice2 == 2 ) { //ArrayList
 
 		}
-		else if ( choice2 == 3 ) { //BSTdone
+		else if ( choice2 == 3 ) { //BST
 
 		}
-		else if ( choice2 == 4 ) { //Heapdone
+		else if ( choice2 == 4 ) { //Heap
 
 		}
-		else if ( choice2 == 5 ) { //Stackdone
+		else if ( choice2 == 5 ) { //Stack
 
 		}
-		else if ( choice2 == 6 ) { //LListdone
+		else if ( choice2 == 6 ) { //LList
 
 		}
-		else if ( choice2 == 7 ) { //Queuedone
+		else if ( choice2 == 7 ) { //Queue
 
 		}
 		else if ( choice2 == 8 ) { //Graph
