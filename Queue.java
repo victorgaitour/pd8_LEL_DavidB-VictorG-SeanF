@@ -1,7 +1,7 @@
 public class Queue{
     public static void main (String args[]){
 	//test for Queue
-	ArrayListVisualizer<Integer> stuff= new ArrayListVisualizer<Integer>();
+	StackVisualizer<Integer> stuff= new StackVisualizer<Integer>();
 	stuff.modify();
 	
 	/*

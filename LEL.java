@@ -243,7 +243,7 @@ public class LEL {
 		    }
 		}
 	    
-		else if ( choice2 == 2 ) { //ArrayList
+		else if ( choice2 == 2 ) { //ArrayListdone
 
 		}
 		else if ( choice2 == 3 ) { //BSTdone

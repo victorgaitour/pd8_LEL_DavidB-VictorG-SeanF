@@ -110,12 +110,13 @@ public class StackVisualizer <T> {
 	    }
 	}
     }
+        
     
     public void push (T stuff) { 
 	vis.add (stuff);
 	top ++;
 	System.out.print(ESC + "2J"); //clear the screen
-	System.out.println(vis); 
+	System.out.println(toString()); 
     }
 
     public T pop () {
@@ -123,7 +124,7 @@ public class StackVisualizer <T> {
 	try {
 	    T tmp = vis.remove (top + 1);
 	    System.out.print(ESC + "2J"); //clear the screen
-	    System.out.println(vis); 
+	    System.out.println(toString()); 
 	    return tmp;
 	}
 	catch (Exception e ) {	
@@ -137,7 +138,7 @@ public class StackVisualizer <T> {
 	try {
 	    T tmp = vis.remove (top);
 	    System.out.print(ESC + "2J"); //clear the screen
-	    System.out.println(vis); 
+	    System.out.println(toString()); 
 	    return tmp;
 	}
 	catch (Exception e ) {	
@@ -146,7 +147,51 @@ public class StackVisualizer <T> {
 	}
     }
 
-
+ 	public String toString()
+	{
+	    String lel="";
+	    for (int i=0; i<vis.size();i++){
+		if (typenum==2) {
+		    int j = ((Integer) (vis.get(i))).intValue();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j=j/10;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i+" ";
+			while(j>=10){
+			    lel=lel+" ";
+			    j=j/10;
+			}
+		    }
+		}
+		else if (typenum==1) {
+		    int j = ((String) vis.get(i)).length();
+		    if (i<10){//for spacing in single digits
+			lel=lel + i + "  ";   
+			while(j>=10){ //for spacing
+			    lel=lel+" ";
+			    j--;
+			}
+		    }
+		    else {//for spacing in double digits
+			lel=lel+i+" ";
+			while(j>=10){
+			    lel=lel+" ";
+			    j--;
+			}
+		    }
+		}
+	    }
+	
+	
+	    String retstr=ESC + "2J"+"Stack: " + vis.toString()+"\n";
+	    retstr+="Index:  "+ lel+ "\n";
+	    return retstr;
+	}//O(?)
     public String Stringfy () {
 	String retStr = "";
 	for (int i = 0; i < this.vis.size(); i++) {
