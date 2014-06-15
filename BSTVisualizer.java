@@ -1,10 +1,166 @@
+import java.util.*;
+import java.lang.*;
+
 public class BSTVisualizer <T extends Comparable <T>>
 {
     @SuppressWarnings("unchecked")
     TreeNode <T>  _root;
+    public int typenum = 0;
+    public String type = "";
+    Scanner sc;
 
-    BSTVisualizer ( ) {
+    public BSTVisualizer ( ) {
 	_root = null;
+	System.out.println( "Which TreeNode Value Type: \nString \nInteger\n" );
+	sc = new Scanner (System.in);
+	while (type.equals("")) {
+	    try {
+		type = sc.next();
+		if (type.equals ("String") || type.equals ("string")) {
+		    typenum = 1;
+		}
+		else if (type.equals("Integer") || type.equals("integer")) {
+		    typenum = 2;
+		}
+		else {
+		    type = "";
+		    System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );
+		}
+	    }
+
+	    catch (Exception e) {
+		type = "";
+		System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );
+	    }
+	}
+
+    }
+
+
+    public void modify () {
+	boolean mod = true;
+	int choice;
+	while (mod){
+	    System.out.println ("\nWould you like to: \n1)Insert a value \n2)Remove a value \n3)Print a traversal");
+	    try {
+		String cho = sc.next();
+		choice = Integer.parseInt(cho);
+		int index = -1;
+		if (choice == 1) {
+		    System.out.println ("\n Insert what value:");
+		    boolean notvalid = true;
+		    while (notvalid) {
+			try {
+			    String input = sc.next();
+			    if (typenum == 1) {
+				String tmp = new String (input);
+				insert ((T)tmp);
+				print (height());
+				mod = false;
+				notvalid = false;
+			    }
+			    else {
+				while (notvalid) {
+				    try{
+					int tmp = Integer.parseInt (input);
+					Integer a = new Integer (tmp);
+					insert ((T) a);
+					print (height());
+					mod = false;
+					notvalid = false;
+				    }
+				    catch (Exception e) {
+					System.out.println( "ERROR: Please input valid Integer" );
+					input = sc.next();
+				    }
+				}
+			    }
+
+
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input the correct data type" );
+			}
+		    }
+		}
+
+
+
+
+		else if (choice == 2) {
+		    System.out.println ("Remove what value:");
+		    boolean notvalid = true;
+		    while (notvalid) {
+			try {
+			    String input = sc.next();
+			    if (typenum == 1) {
+				String tmp = new String (input);
+			        remove ((T)tmp);
+				print (height());
+				mod = false;
+				notvalid = false;
+			    }
+			    else {
+				while (notvalid) {
+				    try{
+					int tmp = Integer.parseInt (input);
+					Integer a = new Integer (tmp);
+				        remove ((T) a);
+					print (height());
+					mod = false;
+					notvalid = false;
+				    }
+				    catch (Exception e) {
+					System.out.println( "ERROR: Value Not found or Please input valid Integer" );
+					input = sc.next();
+				    }
+				}
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Value not found or Please input the correct data type" );
+			}
+		    }
+		}
+		else if (choice == 3) {
+		    System.out.println ("Print what traversal: \n1)PostOrder \n2)PreOrder \n3)InOrder");
+		    boolean nottrav = true;
+		    while (nottrav) {
+			try{
+			    cho = sc.next();
+			    int choice2 = Integer.parseInt(cho);
+			    if (choice2 == 1) {
+				postOrderTrav();
+				nottrav = false;
+				mod = false;
+			    }
+			    else if (choice2 == 2) {
+				preOrderTrav ();
+				nottrav = false;
+				mod = false;
+			    }
+			    else if (choice2 == 3) {
+				inOrderTrav ();
+				nottrav = false;
+				mod = false;
+			    } 
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}
+		    }
+
+		}
+		else {
+		    System.out.println( "ERROR: Please input a valid choice" );
+		}
+	    }
+	    catch (Exception e) {
+		System.out.println( "ERROR: Please input a valid int" );
+		
+	    }
+	}
+
     }
 
 
@@ -50,15 +206,17 @@ public class BSTVisualizer <T extends Comparable <T>>
     }
 
 
-/*  public TreeNode remove( T remVal )
+    public TreeNode remove( T remVal )
     {
 	TreeNode leader = _root;  
 	TreeNode follower = null; //piggybacker
 
+	if (!(remVal.compareTo((T)leader.getValue()) < 0 ) || ( remVal.compareTo((T)leader.getValue()) < 0 ))
+	    _root = null;
 
 	//first, walk leader ptr down to target node w/ trailing follower ptr
-	while( leader != null && leader.getValue() != remVal ) {
-	    if ( remVal.compareTo(leader.getValue()) < 0 ) {
+	while( leader != null && !((((T)(leader.getValue())).compareTo(remVal) < 0)||((T)(leader.getValue())).compareTo(remVal) < 0)  ) {
+	    if ( remVal.compareTo((T)leader.getValue()) < 0 ) {
 		follower = leader;
 		leader = leader.getLeft();
 	    }
@@ -181,7 +339,6 @@ public class BSTVisualizer <T extends Comparable <T>>
 	return leader;
     }//end remove()
 
-*/
 
     public int height()
     {
@@ -292,7 +449,7 @@ public class BSTVisualizer <T extends Comparable <T>>
     }
 
 
-    //main method for testing
+    /*  //main method for testing
     @SuppressWarnings ("unchecked")
     public static void main( String[] args ) {
 	BSTVisualizer test = new BSTVisualizer ();
@@ -300,11 +457,15 @@ public class BSTVisualizer <T extends Comparable <T>>
 	Integer b = new Integer (11);
 	//test.insert(a);
 	//test.insert (b);
-	test.insert ("ssds");
+	String s = new String ("ssds");
+	test.insert (s);
 	int h = test.height ();
 	test.print(h);
 	test.preOrderTrav();
+	test.modify ();
+	h = test.height ();
+	test.print(h);
     }
-
+    */
 
 }//end class
