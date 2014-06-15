@@ -53,7 +53,8 @@ public class LListVisualizer<T> {
 	    System.out.println ("Would you like to: \n1)Add a node \n2)Remove a Node \n3)Set an index \n4)Get an index");
 	    
 	    try {
-		choice = sc.nextInt();
+		String cho = sc.next();
+		choice = Integer.parseInt(cho);
 		int index = -1;
 		if (choice == 1) {
 		    System.out.println ("\nAdd at what index :");
@@ -110,7 +111,9 @@ public class LListVisualizer<T> {
 		    System.out.println ("Remove what index :");
 		    while (index == -1) {
 			try {
-			    index = sc.nextInt();
+			    String ind = sc.next();
+			    index = Integer.parseInt (ind);
+			    
 			    if (index > size () - 1){
 				System.out.println( "ERROR: Please input a valid index" );
 				index = -1;
@@ -127,7 +130,8 @@ public class LListVisualizer<T> {
 		    System.out.println ("Set what index :");
 		    while (index == -1) {
 			try {
-			    index = sc.nextInt();
+			    String ind = sc.next();
+			    index = Integer.parseInt (ind);			   
 			    if (index > size () - 1){
 				System.out.println( "ERROR: Please input a valid index" );
 				index = -1;
@@ -153,7 +157,7 @@ public class LListVisualizer<T> {
 				    try{
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
-					set (index,(T) a);
+					add (index,(T) a);
 					mod = false;
 					notvalid = false;
 				    }
@@ -162,6 +166,7 @@ public class LListVisualizer<T> {
 					input = sc.next();
 				    }
 				}
+			    }
 		
 			}
 		   
@@ -175,7 +180,8 @@ public class LListVisualizer<T> {
 		    System.out.println ("Get what index :");
 		    while (index == -1) {
 			try {
-			    index = sc.nextInt();
+			    String ind = sc.next();
+			    index = Integer.parseInt (ind);
 			    if (index > size () - 1){
 				System.out.println( "ERROR: Please input a valid index" );
 				index = -1;
@@ -195,7 +201,6 @@ public class LListVisualizer<T> {
 	    
 	    }
 	    catch (Exception e) {
-		choice = sc.nextInt();
 		System.out.println( "ERROR: Please input a valid int" );
 	    }
 	}
@@ -430,12 +435,12 @@ public class LListVisualizer<T> {
 	return retStr;
     }
 
-    /*   public static void main (String [] args) {
+  /*  public static void main (String [] args) {
 	LListVisualizer <String> a = new LListVisualizer <String> ();
 	String b = new String ("s");
 	a.add (b);
 	a.modify ();
     }
-    */
-
+  */
 }
+
