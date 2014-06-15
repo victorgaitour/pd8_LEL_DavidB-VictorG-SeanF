@@ -142,24 +142,26 @@ public class LListVisualizer<T> {
 
 		    while (notvalid) {
 			try {
-			    String input = sc.nextLine();
+			    String input = sc.next();
 			    if (typenum == 1) {
 				set (index, (T) input);
 				mod = false;
 				notvalid = false;
 			    }
 			    else {
-				try{
-				    int tmp = Integer.parseInt (input);
-				    Integer a = new Integer (tmp);
-				    set (index,(T) a);
-				    mod = false;
-				    notvalid = false;
+				while (notvalid) {
+				    try{
+					int tmp = Integer.parseInt (input);
+					Integer a = new Integer (tmp);
+					set (index,(T) a);
+					mod = false;
+					notvalid = false;
+				    }
+				    catch (Exception e) {
+					System.out.println( "ERROR: Please input valid Integer" );
+					input = sc.next();
+				    }
 				}
-				catch (Exception e) {
-				    System.out.println( "ERROR: Please input valid Integer" );
-				}
-			    }
 		
 			}
 		   
