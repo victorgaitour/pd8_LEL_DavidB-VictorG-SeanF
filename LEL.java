@@ -244,6 +244,33 @@ public class LEL {
 		}
 	    
 		else if ( choice2 == 2 ) { //ArrayList
+		    ArrayListVisualizer arrayl = new ArrayListVisualizer ();
+		    while(true) {
+			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
+			try {
+			    int choice4 = sc.nextInt();
+			    if ( choice4 == 1 ) { 
+				arrayl.modify();
+			    }
+		
+			    else if ( choice4 == 2 ) { 
+				arrayl.writeCSV ("test.csv");
+			    }
+			    else if ( choice4 == 3 ) {
+				new Gui ("ArrayList", arrayl.Stringfy());
+			    }
+			    else if (choice4 == 4) {
+				System.out.println (arrayl.toString());
+			    }
+			    else if (choice4 == 5) {
+				System.exit(0); 
+			    }
+			}
+			catch (Exception e) {
+			    System.out.println( "ERROR: Please input a valid int" );
+			}	
+
+		    }
 
 		}
 		else if ( choice2 == 3 ) { //BST
