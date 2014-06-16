@@ -216,6 +216,7 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				array.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("Array", array.Stringfy());
@@ -246,6 +247,7 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				arrayl.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("ArrayList", arrayl.Stringfy());
@@ -275,6 +277,7 @@ public class LEL {
 			    }
 			    else if ( choice4 == 2 ) { 
 				BST.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("BST", BST.Stringfy());
@@ -303,6 +306,7 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				heap.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("Heap", heap.Stringfy());
@@ -361,6 +365,7 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				LL.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("LList", LL.Stringfy());
@@ -390,6 +395,7 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				Que.writeCSV ("test.csv");
+				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("Queue", Que.Stringfy());
