@@ -52,7 +52,7 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 			    if (typenum == 1) {
 				String tmp = new String (input);
 				add ((T)tmp);
-				//mod=false;
+				mod=false;
 				notvalid = false;
 			    }
 			    else {
@@ -61,7 +61,7 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 					int tmp = Integer.parseInt (input);
 					Integer a = new Integer (tmp);
 					add ((T) a);
-					//mod=false;
+					mod=false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
