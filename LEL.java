@@ -11,6 +11,7 @@ import org.jfree.data.general.*;
 import org.jfree.chart.plot.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.text.*;
 
 /***********************************
 TO COMPILE:
@@ -25,14 +26,18 @@ public class LEL {
     public static class Gui{
 	private String type = "";
 	private JTextField textfield;
-	private JTextPane[] display;; 
+	private JTextPane[] display; 
+	private JLabel textLabel;
 
 	public Gui (String structure, String s) {
 	    JFrame guiFrame = new JFrame();
 	    //sets up interface
 	    guiFrame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);;
 	    guiFrame.setTitle(structure + " Visualizer");
-	    guiFrame.setSize(800,800);
+	    guiFrame.setSize(1000,1000);
+	    textLabel = new JLabel(structure + "Visualizer" ,SwingConstants.CENTER); 
+	    textLabel.setPreferredSize(new Dimension(300, 100)); 
+	    textLabel.setFont(new Font("Serif", Font.BOLD, 45));
 
 	    JPanel panel = new JPanel();
 	    panel.setBorder(new LineBorder(Color.GREEN, 4));
@@ -53,10 +58,12 @@ public class LEL {
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
 		    //sets it so that the text in the textpane cannot be typed over
 		    display[m].setEditable(false);
 		    display[m].setBackground (Color.WHITE);
 		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
 		    display[m].setText (m  + ": " + a.get (m));	     
 		    panel.add(display[m], BorderLayout.CENTER);
 		}	    
@@ -75,10 +82,12 @@ public class LEL {
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
 		    //sets it so that the text in the textpane cannot be typed over
 		    display[m].setEditable(false);
 		    display[m].setBackground (Color.WHITE);
 		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
 		    display[m].setText (m  + ": " + a.get (m));	     
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
@@ -98,14 +107,41 @@ public class LEL {
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
 		    //sets it so that the text in the textpane cannot be typed over
 		    display[m].setEditable(false);
 		    display[m].setBackground (Color.WHITE);
 		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
 		    display[m].setText (m  + ": " + a.get (m));	     
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
 	    }
+	    if (structure.equals ("Queue")) {
+		ArrayList a = new ArrayList ();
+		String t = "";
+		for (char ch: s.toCharArray()) {
+		    if (!(ch == ','))
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
+		}
+		JTextPane [] display = new JTextPane [a.size()];
+		for (int m=0; m< a.size(); m++) {
+		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) );
+		    //sets it so that the text in the textpane cannot be typed over
+		    display[m].setEditable(false);
+		    display[m].setBackground (Color.WHITE);
+		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
+		    display[m].setText (m  + ": " + a.get (m));	     
+		    panel.add(display[m], BorderLayout.CENTER);
+		}
+	    }
+
 	    if (structure.equals ("Stack")) {
 		ArrayList a = new ArrayList ();
 		String t = "";
@@ -120,10 +156,12 @@ public class LEL {
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
 		    //sets it so that the text in the textpane cannot be typed over
 		    display[m].setEditable(false);
 		    display[m].setBackground (Color.WHITE);
 		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
 		    display[m].setText (m  + ": "+ a.get (m));	     
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
@@ -142,44 +180,64 @@ public class LEL {
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
+		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
 		    //sets it so that the text in the textpane cannot be typed over
 		    display[m].setEditable(false);
 		    display[m].setBackground (Color.WHITE);
 		    display[m].setForeground(Color.BLACK);
+		    display[m].setFont(new Font("Serif", Font.BOLD, 30));
 		    display[m].setText (m + ": " + a.get (m) + "|.|->");	     
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
 	    }
 	    if (structure.equals ("BST")) {
 		ArrayList a = new ArrayList ();
-		JTextArea textArea = new JTextArea(40, 40);
+		StyleContext context = new StyleContext();
+		StyledDocument document = new DefaultStyledDocument(context);
+
+		Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
+		StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
+		StyleConstants.setFontSize(style, 28);
+		StyleConstants.setSpaceAbove(style, 5);
+		StyleConstants.setSpaceBelow(style, 5);
 		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
 			t += ch;
 		    else{
 		        a.add (t);
-			t = " ";
+			t = "  ";
 		    }
 		}
 		t = "";
 		for (int m = 0; m < a.size (); m ++) {
 		    t += a.get (m);
 		}
-		textArea.setText(t);
-		JScrollPane scrollPane = new JScrollPane(textArea);	    		    
+
+		try {
+		    document.insertString(document.getLength(), t, style);
+		} 
+		catch (BadLocationException e) {
+		    System.err.println ("Error");
+		}
+		JTextPane textPane = new JTextPane(document);
+		textPane.setPreferredSize( new Dimension( 900, 900 ) );
+		textPane.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(textPane);
+	    		    
 		panel.add(scrollPane, BorderLayout.CENTER);
 	    }
 
 
-
 	    guiFrame.getContentPane().add(panel, BorderLayout.CENTER);
-
+	    guiFrame.getContentPane().add(textLabel, BorderLayout.NORTH);
 	    guiFrame.validate();
 	    guiFrame.setVisible(true);
 	    }
 
 	}
+
+	
     
     public static void main (String[] args) {
 	Scanner sc = new Scanner( System.in );
@@ -190,8 +248,8 @@ public class LEL {
 
 	    try {
 		notvalid = false;
-		int choice2 = sc.nextInt();
-		
+		String choice2S = sc.next();
+		int choice2 = Integer.parseInt (choice2S);
 		if ( choice2 == 1 ) { //Array
 		    ArrayVisualizer array;
 		    while (true) {
@@ -265,9 +323,6 @@ public class LEL {
 		    }
 
 		}
-		/***********************
-		 * BEGIN BLOCK COMMENT HERE IF Inconvertible type ERRORS OCCUR
-		 * *************************/
 		else if ( choice2 == 3 ) { //BST
 		    BSTVisualizer BST = new BSTVisualizer ();
 		    while(true) {
@@ -281,7 +336,7 @@ public class LEL {
 				BST.writeCSV ("test.csv");
 				System.out.println("Written to test.csv");
 			    }
-			    else if ( choice4 == 3 ) {
+			    else if ( choice4 == 3 ) { 
 				new Gui ("BST", BST.Stringfy());
 			    }
 			    else if (choice4 == 4) {
@@ -326,9 +381,6 @@ public class LEL {
 		    }	
 
 		}
-		/***********************
-		 * END BLOCK COMMENT HERE IF Inconvertible type ERRORS OCCUR
-		 * *************************/
 		else if ( choice2 == 5 ) { //Stack
 		    StackVisualizer stack = new StackVisualizer ();
 		    while(true) {
