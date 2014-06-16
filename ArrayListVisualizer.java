@@ -2,17 +2,17 @@ import java.util.*;
 import java.io.*;
 
 public class ArrayListVisualizer <T> extends Visualizer<T>{
-    final static String ESC = "\033[";
+    final static String ESC = "\033[";//skips lines in terminal, looks like screen is refreshed
     public ArrayList<T> arraylist;
-    public int typenum = 0;
+    public int typenum = 0;//1 stands for String, 2 Stands for Integer
     public String type = "";
-    Scanner sc;
+    Scanner sc; //scanner class
 
     public ArrayListVisualizer(){
 	arraylist = new ArrayList <T> ();
-	sc = new Scanner(System.in);
-	System.out.println( "Which Data Type: \nString \nInteger\n" );
-	while (type.equals("")) {
+	sc = new Scanner(System.in); 
+	System.out.println( "Which Data Type: \nString \nInteger\n" );//determines what data type this generic arrayList will be
+	while (type.equals("")) {//give the user tons of tries to get it right
 	    try {
 		type = sc.next();
 		if (type.equals ("String") || type.equals ("string")) {
@@ -23,7 +23,7 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 		}
 		else {
 		    type = "";
-		    System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );
+		    System.out.println( "ERROR: Please enter a valid data type and do not use spaces" );//if it was mispelled or mistype
 		}
 	    }
 
@@ -35,24 +35,24 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
     }
 
     public void modify () {
-	boolean mod = true;
+	boolean mod = true; //continue to modify
 	int choice;
 	int index = -1;
 	while (mod){
 	    System.out.println ("Would you like to: \n1)Add a value \n2)Remove an Index \n3)Add a value to the end of the arraylist \n4)Set an index to a value");
 	    try {
-		String cho = sc.next();
+		String cho = sc.next(); //we found next() to be the least prone to causing errors
 		choice = Integer.parseInt(cho);
-		if (choice == 1 || choice == 3) {
+		if (choice == 1 || choice == 3) { //if option 1 or 3 was chosen
 		    System.out.println ("\n Add what value:");
 		    boolean notvalid = true;
-		    while (notvalid) {
+		    while (notvalid) { //keeps asking for user input until they return a valid answer
 			try {
 			    String input = sc.next();
 			    if (typenum == 1) {
 				String tmp = new String (input);
 				if (choice == 3) {
-				    add (arraylist.size(), (T)tmp);
+				    add (arraylist.size(), (T)tmp);//add value to end of ArrayLIst
 				}
 				if (choice == 1) {
 				    index = - 1;
@@ -116,7 +116,7 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 			    System.out.println( "ERROR: Please input the correct data type" );
 			}
 		    }
-		}
+		}//so many cases to ensure we don't get runtime errors
 
 
 
@@ -199,16 +199,16 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 		System.out.println( "ERROR: Please input a valid int" );
 	    }
 	}
-    }
+    }//again, so many cases, to avoid getting errors
     
 
 
  
-    public void add(int index, T stuff){
-	arraylist.add(index,stuff); //clear the screen
+    public void add(int index, T stuff){//modified add for ArrayListVisualizer
+	arraylist.add(index,stuff); 
 	System.out.println(toString()); 
     }
-    public void insert(int index, T stuff){
+    public void insert(int index, T stuff){// modified insert/set
 	try {
 	    arraylist.set(index,stuff);
 	    System.out.println(toString());
@@ -217,11 +217,11 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 	    System.out.println(e.getMessage() + ": Invalid index. Try again");
 	}
     }
-    public void delete(int index){
+    public void delete(int index){//modified remove
 	System.out.println( arraylist.remove(index)); 
 	System.out.println(toString());
     }
-    public String toString()
+    public String toString()// terminal interface data structure visualization
     {
 	String lel="";
 	String retstr= "";
@@ -268,7 +268,7 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 	return retstr;
     }
     
-    public String Stringfy () {
+    public String Stringfy () {//converts data structure to comman seperated values, for csv files
 	String retStr = "";
 	for (int i = 0; i < this.arraylist.size(); i++) {
 	    retStr += "" + this.arraylist.get (i) + ",";
@@ -279,7 +279,7 @@ public class ArrayListVisualizer <T> extends Visualizer<T>{
 
 	
 	
-    public void writeCSV (String FileName) {
+    public void writeCSV (String FileName) {//writes to a csv file
 	try{
 	    FileWriter writer = new FileWriter(FileName);
 	    for (char ch: this.Stringfy().toCharArray()) {
