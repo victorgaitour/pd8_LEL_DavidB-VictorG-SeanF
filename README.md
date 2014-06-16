@@ -26,3 +26,4 @@ java -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." 
 
 If, for some reason, this doesn't work, it technically only affects the chart making.  By entering LEL.java (the driver file) and commenting out any import statement the begins with "org.jfree." and the entirety of the "else if (choice2 == 8)" block, the code should work with limited functionality.
 
+NOTE: Some compile errors have arisen amongst the three of us that have left us completely confused.  Not to say the project doesn't work -- it does, but each of us have gotten a different error at a different part of the code, using the same code.  An error in one file is caught on one member's computer, while it works fine on someone else's, and vice versa with other code bits.  For this reason, you might get an error with one or more parts of this project.  If so, look to the LEL.java file and comment out the specified blocks of code in order to use the rest of the project.
