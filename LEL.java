@@ -467,7 +467,7 @@ public class LEL {
 		    System.out.println( "data: " + data );
 		    //^^^ENTERING DATA CODE^^^
 
-		    System.out.println( "Please choose a type of graph.\n1: Bar Graph(DOES NOT WORK) \n2:Line Graph(DOES NOT WORK)\n3: Pie Chart" );
+		    System.out.println( "Please choose a type of graph.\n1: Bar Graph\n2: Pie Chart" );
 		    int graphChoice;
 		    String graphTitle = "";
 		    String xTitle = "";
@@ -485,7 +485,7 @@ public class LEL {
 			JPanel chartPanel = new JPanel();
 			chartPanel.setLayout(new java.awt.BorderLayout());
 
-			/*if ( graphChoice == 1 || graphChoice == 2 ) { //Bar or Line graph
+			if ( graphChoice == 1 ) { //Bar graph
 			    System.out.print( "Enter a x-axis title: " );
 			    xTitle = sc.next();
 			    System.out.print( "Enter a y-axis title: " );
@@ -496,15 +496,15 @@ public class LEL {
 				barGraph.addValue( s );
 			    ChartPanel chart = barGraph.createBarGraph();
 			    chartPanel.add(chart, BorderLayout.CENTER);
-			}*/
-		    if ( graphChoice == 3 ) {
+			}
+		    if ( graphChoice == 2 ) {
 			    PieChart pieChart = new PieChart( graphTitle );
 			    for ( String s: data )
 				pieChart.addValue( s );
 			    ChartPanel chart = pieChart.createChart();
 			    chartPanel.add(chart, BorderLayout.CENTER);
 			}
-			else if ( graphChoice != 3 )
+			else 
 			    System.out.println( "ERROR: Please enter a valid int" );
 			chartPanel.validate();
 			chartFrame.add( chartPanel );
