@@ -323,6 +323,10 @@ public class LEL {
 		    }
 
 		}
+		/***********************
+		 * BEGIN BLOCK COMMENT HERE IF Inconvertible type ERRORS OCCUR
+		 * *************************/
+
 		else if ( choice2 == 3 ) { //BST
 		    BSTVisualizer BST = new BSTVisualizer ();
 		    while(true) {
@@ -381,6 +385,10 @@ public class LEL {
 		    }	
 
 		}
+		/***********************
+		 * END BLOCK COMMENT HERE IF Inconvertible type ERRORS OCCUR
+		 * *************************/
+
 		else if ( choice2 == 5 ) { //Stack
 		    StackVisualizer stack = new StackVisualizer ();
 		    while(true) {
