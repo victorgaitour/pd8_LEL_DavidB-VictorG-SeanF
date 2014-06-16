@@ -7,7 +7,9 @@ Our project is a data visualizer.  It begins with command line interface, where 
 **Compiling/running:**
 
 At first try:
+
 javac -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." LEL.java
+
 java -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." LEL
 
 If that doesn’t work, you need to download jcommon version 1.0.22 and jfreechart 1.0.17 for this.  Once you download the .zip files, you need to unpack them.  If you have Linux or Unix, while in the directory of the downloaded zip file, enter "tar xvzf jfreechart-1.0.17.zip" into the terminal.  Then enter "tar xvzf jcommon-1.0.22.zip" to unpack jcommon.  If you have Windows, enter "jar -xvf jfreechart-1.0.13.zip" to unpack jfreechart, then enter "jar -xvf jcommon-1.0.22.zip" to unpack jcommon.
