@@ -106,50 +106,6 @@ public class LEL {
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
 	    }
-	    if (structure.equals ("Heap")) {
-		ArrayList a = new ArrayList ();
-		String t = "";
-		for (char ch: s.toCharArray()) {
-		    if (!(ch == ','))
-			t += ch;
-		    else{
-		        a.add (t);
-			t = "";
-		    }
-		}
-		JTextPane [] display = new JTextPane [a.size()];
-		for (int m=0; m< a.size(); m++) {
-		    display[m] = new JTextPane();
-		    //sets it so that the text in the textpane cannot be typed over
-		    display[m].setEditable(false);
-		    display[m].setBackground (Color.WHITE);
-		    display[m].setForeground(Color.BLACK);
-		    display[m].setText (m  + ": " + a.get (m));	     
-		    panel.add(display[m], BorderLayout.CENTER);
-		}
-	    }
-	    if (structure.equals ("Queue")) {
-		ArrayList a = new ArrayList ();
-		String t = "";
-		for (char ch: s.toCharArray()) {
-		    if (!(ch == ','))
-			t += ch;
-		    else{
-		        a.add (t);
-			t = "";
-		    }
-		}
-		JTextPane [] display = new JTextPane [a.size()];
-		for (int m=0; m< a.size(); m++) {
-		    display[m] = new JTextPane();
-		    //sets it so that the text in the textpane cannot be typed over
-		    display[m].setEditable(false);
-		    display[m].setBackground (Color.WHITE);
-		    display[m].setForeground(Color.BLACK);
-		    display[m].setText (m  + ": " + a.get (m));	     
-		    panel.add(display[m], BorderLayout.CENTER);
-		}
-	    }
 	    if (structure.equals ("Stack")) {
 		ArrayList a = new ArrayList ();
 		String t = "";
@@ -380,7 +336,6 @@ public class LEL {
 		
 			    else if ( choice4 == 2 ) { 
 				stack.writeCSV ("test.csv");
-				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
 				new Gui ("Stack", stack.Stringfy());
