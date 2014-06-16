@@ -93,12 +93,20 @@ public class StackVisualizer <T> extends Visualizer<T>{
 	    
 
 		else if (choice == 2) {
+		    mod = false;
+
 		    System.out.println ("Popping:");
-		    System.out.println (pop ());
+		    T tmp = pop ();
+		    if (tmp == null) 
+			System.out.println ("Stack is Empty");
+		    else
+			System.out.println ("Popped Value: " + tmp);
 		}
 		else if (choice == 3) {
+		    mod = false;
+        
 		    System.out.println ("Peeking :");
-		    System.out.println (peek());
+		    System.out.println ("Peeked Value: " + peek());
 		}
 		else {
 		    System.out.println( "ERROR: Please input a valid choice" );
@@ -120,15 +128,16 @@ public class StackVisualizer <T> extends Visualizer<T>{
     }
 
     public T pop () {
-	top --;
 	try {
-	    T tmp = vis.remove (top + 1);
+	    top --;
+	    T tmp = vis.remove (top);
 	    System.out.print(ESC + "2J"); //clear the screen
 	    System.out.println(toString()); 
 	    return tmp;
 	}
 	catch (Exception e ) {	
 	    System.out.println (e.getMessage() + ": Stack is empty");
+	    top = 0;
 	    return null;
 	}
 	    
@@ -136,7 +145,7 @@ public class StackVisualizer <T> extends Visualizer<T>{
 
     public T peek (){
 	try {
-	    T tmp = vis.remove (top);
+	    T tmp = vis.get (top);
 	    System.out.print(ESC + "2J"); //clear the screen
 	    System.out.println(toString()); 
 	    return tmp;
