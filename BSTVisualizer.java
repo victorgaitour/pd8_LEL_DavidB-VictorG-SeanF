@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
+public class BSTVisualizer <T extends Comparable <T>>
 {
     @SuppressWarnings("unchecked")
     TreeNode <T>  _root;
@@ -57,7 +57,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 				String tmp = new String (input);
 				insert ((T)tmp);
 				print (height());
-				//mod = false;
+				mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -67,7 +67,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 					Integer a = new Integer (tmp);
 					insert ((T) a);
 					print (height());
-					//mod = false;
+					mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -98,7 +98,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 				String tmp = new String (input);
 			        remove ((T)tmp);
 				print (height());
-				//mod = false;
+				mod = false;
 				notvalid = false;
 			    }
 			    else {
@@ -108,7 +108,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 					Integer a = new Integer (tmp);
 				        remove ((T) a);
 					print (height());
-					//mod = false;
+					mod = false;
 					notvalid = false;
 				    }
 				    catch (Exception e) {
@@ -133,17 +133,17 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 			    if (choice2 == 1) {
 				postOrderTrav();
 				nottrav = false;
-				//mod = false;
+				mod = false;
 			    }
 			    else if (choice2 == 2) {
 				preOrderTrav ();
 				nottrav = false;
-				//mod = false;
+				mod = false;
 			    }
 			    else if (choice2 == 3) {
 				inOrderTrav ();
 				nottrav = false;
-				//mod = false;
+				mod = false;
 			    } 
 			}
 			catch (Exception e) {
@@ -152,6 +152,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 		    }
 
 		}
+        
 		else {
 		    System.out.println( "ERROR: Please input a valid choice" );
 		}
@@ -416,7 +417,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 	System.out.print( currNode.getValue() + " "  );
     }
 
-    public void print(int depth) {
+   public void print(int depth) {
 	for (int i = 1; i <= depth; i++) {
 	    String space = "";
 	    int tmp = height () - i;
@@ -428,8 +429,11 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 	}
     }
 
-	
-	
+
+
+
+
+
     //helper for print
     public String printLevel(TreeNode <T> tree, int level) {
 	if (tree == null) {
@@ -450,6 +454,7 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 	else 
 	    return "";
     }
+
 
     public String printLevelCommas(TreeNode <T> tree, int level) {
 	if (tree == null) {
@@ -472,6 +477,8 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
     }
 
 
+
+
     public String Stringfy () {
 	String retStr = "";
 	for (int i = 1; i <= height(); i++) {
@@ -484,8 +491,11 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 	return retStr;
     }
 
-	
-	
+
+
+
+
+
     public void writeCSV (String FileName) {
 	try{
 	    FileWriter writer = new FileWriter(FileName);
@@ -500,28 +510,24 @@ public class BSTVisualizer <T extends Comparable <T>> extends Visualizer<T>
 	} 
     }
 
-    /*    //main method for testing
+
+    /*  //main method for testing
     @SuppressWarnings ("unchecked")
-	public static void main( String[] args ) {
+    public static void main( String[] args ) {
 	BSTVisualizer test = new BSTVisualizer ();
 	Integer a = new Integer (10);
 	Integer b = new Integer (11);
 	//test.insert(a);
 	//test.insert (b);
 	String s = new String ("ssds");
-	//	test.insert (s);
+	test.insert (s);
 	int h = test.height ();
 	test.print(h);
 	test.preOrderTrav();
 	test.modify ();
-	test.modify ();
-	test.modify ();
-	test.modify ();
-	System.out.println (test.Stringfy());
 	h = test.height ();
-	test.writeCSV ("test.csv");
 	test.print(h);
-	} */
-    
+    }
+    */
 
 }//end class

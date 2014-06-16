@@ -10,6 +10,7 @@ import org.jfree.data.*;
 import org.jfree.data.general.*;
 import org.jfree.chart.plot.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 /***********************************
 TO COMPILE:
@@ -29,24 +30,25 @@ public class LEL {
 	public Gui (String structure, String s) {
 	    JFrame guiFrame = new JFrame();
 	    //sets up interface
-	    guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    guiFrame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);;
 	    guiFrame.setTitle(structure + " Visualizer");
 	    guiFrame.setSize(800,800);
 
-	    try { 
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
-
 	    JPanel panel = new JPanel();
-
+	    panel.setBorder(new LineBorder(Color.GREEN, 4));
+	    panel.setBackground(Color.CYAN);
 	    
 	    if (structure.equals ("Array")) {
 		ArrayList a = new ArrayList ();
+		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
-			a.add (ch);
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
+		    
 		}
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
@@ -61,9 +63,14 @@ public class LEL {
 	    }
 	    if (structure.equals ("ArrayList")) {
 		ArrayList a = new ArrayList ();
+		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
-			a.add (ch);
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
 		}
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
@@ -76,11 +83,17 @@ public class LEL {
 		    panel.add(display[m], BorderLayout.CENTER);
 		}
 	    }
+	
 	    if (structure.equals ("Heap")) {
 		ArrayList a = new ArrayList ();
+		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
-			a.add (ch);
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
 		}
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
@@ -95,9 +108,14 @@ public class LEL {
 	    }
 	    if (structure.equals ("Stack")) {
 		ArrayList a = new ArrayList ();
+		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
-			a.add (ch);
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
 		}
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
@@ -112,9 +130,14 @@ public class LEL {
 	    }
 	    if (structure.equals ("LList")) {
 		ArrayList a = new ArrayList ();
+		String t = "";
 		for (char ch: s.toCharArray()) {
 		    if (!(ch == ','))
-			a.add (ch);
+			t += ch;
+		    else{
+		        a.add (t);
+			t = "";
+		    }
 		}
 		JTextPane [] display = new JTextPane [a.size()];
 		for (int m=0; m< a.size(); m++) {
@@ -128,8 +151,22 @@ public class LEL {
 		}
 	    }
 	    if (structure.equals ("BST")) {
+		ArrayList a = new ArrayList ();
 		JTextArea textArea = new JTextArea(40, 40);
-		textArea.setText(s);
+		String t = "";
+		for (char ch: s.toCharArray()) {
+		    if (!(ch == ','))
+			t += ch;
+		    else{
+		        a.add (t);
+			t = " ";
+		    }
+		}
+		t = "";
+		for (int m = 0; m < a.size (); m ++) {
+		    t += a.get (m);
+		}
+		textArea.setText(t);
 		JScrollPane scrollPane = new JScrollPane(textArea);	    		    
 		panel.add(scrollPane, BorderLayout.CENTER);
 	    }
@@ -236,7 +273,6 @@ public class LEL {
 			    if ( choice4 == 1 ) { 
 				BST.modify();
 			    }
-		
 			    else if ( choice4 == 2 ) { 
 				BST.writeCSV ("test.csv");
 			    }
@@ -244,7 +280,7 @@ public class LEL {
 				new Gui ("BST", BST.Stringfy());
 			    }
 			    else if (choice4 == 4) {
-				System.out.println (BST.toString());
+				BST.print(BST.height());
 			    }
 			    else if (choice4 == 5) {
 				System.exit(0); 
