@@ -21,6 +21,10 @@ java -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." 
 **********************************/
 
 public class LEL {
+	
+	/**************************
+	 * BEGIN BLOCK COMMENT HERE IF ANY Inconvertible type ERRORS OCCUR
+	 * ************************/
 
     public static class Gui{
 	private String type = "";
@@ -181,7 +185,9 @@ public class LEL {
 
 	}
 
-	
+	/***********************
+	 * END BLOCK COMMENT HERE IS Inconvertible type ERRORS OCCUR
+	 * **********************/
     
     public static void main (String[] args) {
 	Scanner sc = new Scanner( System.in );
@@ -266,6 +272,9 @@ public class LEL {
 		    }
 
 		}
+		/*******************
+		 * BEGIN SECOND BLOCK COMMENT HERE IF Incovertible tpye ERRORS OCCUR
+		 * ******************/
 		else if ( choice2 == 3 ) { //BST
 		    BSTVisualizer BST = new BSTVisualizer ();
 		    while(true) {
@@ -324,6 +333,9 @@ public class LEL {
 		    }	
 
 		}
+		/********************
+		 * END SECOND BLOCK COMMENT HERE IF Inconvertible type ERRORS OCCUR
+		 * ********************/
 		else if ( choice2 == 5 ) { //Stack
 		    StackVisualizer stack = new StackVisualizer ();
 		    while(true) {
@@ -413,6 +425,9 @@ public class LEL {
 		    }
 
 		}
+		/*******************
+		 * BEGIN BLOCK COMMENT HERE IF GRAPH ERRORS OCCUR
+		 * ********************/
 		else if ( choice2 == 8 ) { //Graph
 		    	
 		    System.out.print( "Would you like to: 1) Read in a .csv file (in the same directory as this java file) with your data 2) Enter your data via the terminal?\n1 or 2: " );
@@ -514,6 +529,9 @@ public class LEL {
 			System.out.println( "!ERROR: Please input a valid int" );
 		    }
 		}
+		/******************
+		 * END BLOCK COMMENT HERE IF GRAPH ERRORS OCCUR
+		 * *******************/
 		else
 		    System.out.println( "ERROR: User input invalid" );
 	    }
