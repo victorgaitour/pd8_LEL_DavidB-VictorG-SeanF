@@ -37,7 +37,7 @@ public class LEL {
 	    guiFrame.setSize(1000,1000);
 	    textLabel = new JLabel(structure + "Visualizer" ,SwingConstants.CENTER); 
 	    textLabel.setPreferredSize(new Dimension(300, 100)); 
-	    textLabel.setFont(new Font("Serif", Font.BOLD, 45));
+	    textLabel.setFont(new Font("Serif", Font.BOLD, 45));//bigger text is more pleasing to look at
 
 	    JPanel panel = new JPanel();
 	    panel.setBorder(new LineBorder(Color.GREEN, 4));
@@ -46,7 +46,7 @@ public class LEL {
 	    if (structure.equals ("Array")) {
 		ArrayList a = new ArrayList ();
 		String t = "";
-		for (char ch: s.toCharArray()) {
+		for (char ch: s.toCharArray()) {//seperates Stringified data by the commas
 		    if (!(ch == ','))
 			t += ch;
 		    else{
@@ -55,7 +55,7 @@ public class LEL {
 		    }
 		    
 		}
-		JTextPane [] display = new JTextPane [a.size()];
+		JTextPane [] display = new JTextPane [a.size()]; //array of JTextPanes
 		for (int m=0; m< a.size(); m++) {
 		    display[m] = new JTextPane();
 		    display[m].setPreferredSize( new Dimension( 100, 100 ) ); 
@@ -192,11 +192,11 @@ public class LEL {
 	    }
 	    if (structure.equals ("BST")) {
 		ArrayList a = new ArrayList ();
-		StyleContext context = new StyleContext();
+		StyleContext context = new StyleContext();//allows for formatting in JTextPane
 		StyledDocument document = new DefaultStyledDocument(context);
 
 		Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
-		StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
+		StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);//centers the text
 		StyleConstants.setFontSize(style, 28);
 		StyleConstants.setSpaceAbove(style, 5);
 		StyleConstants.setSpaceBelow(style, 5);
@@ -221,7 +221,7 @@ public class LEL {
 		    System.err.println ("Error");
 		}
 		JTextPane textPane = new JTextPane(document);
-		textPane.setPreferredSize( new Dimension( 900, 900 ) );
+		textPane.setPreferredSize( new Dimension( 900, 900 ) );//Gui will not load if data too long
 		textPane.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(textPane);
 	    		    
@@ -255,7 +255,8 @@ public class LEL {
 		    while (true) {
 			System.out.print ("Initialize the size of the array: ");
 			try {
-			    int choice3 = sc.nextInt();
+			    String choice3S = sc.next();
+			    int choice3 = Integer.parseInt (choice3S);
 			    array = new ArrayVisualizer (choice3);
 			    break;
 			}
@@ -298,7 +299,7 @@ public class LEL {
 			System.out.println( "\nWould you like to: \n1)Modify the data structure \n2)Convert to csv file \n3)Visualize data in Gui \n4)Print the data \n5)End Program " );
 			try {
 			    int choice4 = sc.nextInt();
-			    if ( choice4 == 1 ) { 
+			    if ( choice4 == 1 ) { //choices are self explanatory by corresponding options
 				arrayl.modify();
 			    }
 		
@@ -307,13 +308,13 @@ public class LEL {
 				System.out.println("Written to test.csv");
 			    }
 			    else if ( choice4 == 3 ) {
-				new Gui ("ArrayList", arrayl.Stringfy());
+				new Gui ("ArrayList", arrayl.Stringfy());//instantiates new Gui
 			    }
 			    else if (choice4 == 4) {
 				System.out.println (arrayl.toString());
 			    }
 			    else if (choice4 == 5) {
-				System.exit(0); 
+				System.exit(0); //exits program
 			    }
 			}
 			catch (Exception e) {
@@ -565,7 +566,7 @@ public class LEL {
 			    ChartPanel chart = barGraph.createBarGraph();
 			    chartPanel.add(chart, BorderLayout.CENTER);
 			}
-		    if ( graphChoice == 2 ) {
+			if ( graphChoice == 2 ) {
 			    PieChart pieChart = new PieChart( graphTitle );
 			    for ( String s: data )
 				pieChart.addValue( s );

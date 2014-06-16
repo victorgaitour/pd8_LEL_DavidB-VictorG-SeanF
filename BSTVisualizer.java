@@ -2,9 +2,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class BSTVisualizer <T extends Comparable <T>>
+//allows for type generic comparisons
+public class BSTVisualizer <T extends Comparable <T>> 
 {
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")//warnings are annoying
     TreeNode <T>  _root;
     public int typenum = 0;
     public String type = "";
@@ -417,7 +418,7 @@ public class BSTVisualizer <T extends Comparable <T>>
 	System.out.print( currNode.getValue() + " "  );
     }
 
-   public void print(int depth) {
+    public void print(int depth) { //prints levelorder
 	for (int i = 1; i <= depth; i++) {
 	    String space = "";
 	    int tmp = height () - i;
@@ -456,7 +457,7 @@ public class BSTVisualizer <T extends Comparable <T>>
     }
 
 
-    public String printLevelCommas(TreeNode <T> tree, int level) {
+    public String printLevelCommas(TreeNode <T> tree, int level) {//prints level by level with commas, useful for csv
 	if (tree == null) {
 	    return ",";
 	}
@@ -477,9 +478,9 @@ public class BSTVisualizer <T extends Comparable <T>>
     }
 
 
+    //unusual comma placements actually looked the best when printing in terminal, most of it is calculated and thought out.
 
-
-    public String Stringfy () {
+    public String Stringfy () { //data to String with commas, for csv files
 	String retStr = "";
 	for (int i = 1; i <= height(); i++) {
 	    String space = "";

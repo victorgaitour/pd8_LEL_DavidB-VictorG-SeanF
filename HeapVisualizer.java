@@ -4,7 +4,7 @@ import java.lang.*;
 import java.io.*;
 
 //this is a minheap
-
+//allows for comparisons of generics, extends super class
 public class HeapVisualizer <T extends Comparable <T>> extends Visualizer<T>{
     final static String ESC = "\033[";
     public ALHeap <T> heap;
@@ -168,7 +168,8 @@ public class HeapVisualizer <T extends Comparable <T>> extends Visualizer<T>{
 	    retstr+="Index: "+ lel+ "\n";
 	    return retstr;
 	}//O(?)
-    
+
+	//heap uses underlying alheap with an underlying arraylist
     public class ALHeap <T extends Comparable <T>> {
 	
 	//instance vars
@@ -345,7 +346,7 @@ public class HeapVisualizer <T extends Comparable <T>> extends Visualizer<T>{
 	}
     }
 
-    public String Stringfy () {
+    public String Stringfy () {//data to String with commas, good for csv files
 	String retStr = "";
 	for (int i = 0; i < this.heap.heap.size(); i++) {
 	    retStr += "" + this.heap.heap.get (i) + ",";

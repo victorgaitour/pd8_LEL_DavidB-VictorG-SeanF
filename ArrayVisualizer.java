@@ -14,8 +14,8 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
     private int size;
     
     public ArrayVisualizer (int size) {
-	@SuppressWarnings("unchecked")
-	T[] s =(T[]) new Object[size];
+	@SuppressWarnings("unchecked")//to lessen those pesky warnings. WE KNOW WHAT WE ARE DOING, probably.
+	    T[] s =(T[]) new Object[size];//special work around majic to deal with underlying generic array
 	vis = s;
 	slot = 0;
 	this.size = size;
@@ -218,7 +218,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
     }
 
     
-    public void print () {
+    public void print () { //special print statement to print out a neat looking array
 	System.out.print ( "[ ");
 	for (int i = 0; i < vis.length - 1; i ++ ) {
 	    if (vis [i] == null) 
@@ -232,7 +232,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
 	    System.out.print ( vis [vis.length - 1] + " ]\n");
     }
 
-    public void add (int index, T stuff) {
+    public void add (int index, T stuff) { //gave ArrayVis an add method like ArrayList
 	try{
 	    vis [index] = stuff;
 	    System.out.print(ESC + "2J"); //clear the screen
@@ -285,7 +285,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
 	return null;
     }
 
-    public void set (int index, T value) {
+    public void set (int index, T value) {//similar to arraylist.set()
 	try{
 	    vis [index] = value;
 	    System.out.print(ESC + "2J"); //clear the screen
@@ -296,7 +296,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
 	}
     }
     
-    public T get (int index) {
+    public T get (int index) {//similar to arraylist.get()
 	try{
 	    return vis [index];
 	}
@@ -307,7 +307,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
        
     }
 
-    public String Stringfy () {
+    public String Stringfy () {//convert data into String with commas in between the values. Useful for csv conversion.
 	String retStr = "";
 	for (int i = 0; i < size; i++) {
 	    retStr += "" + get (i) + ",";
@@ -318,7 +318,7 @@ public class ArrayVisualizer <T> extends Visualizer<T>{
 
 	
 	
-    public void writeCSV (String FileName) {
+    public void writeCSV (String FileName) {//writes to csv file, use text.csv
 	try{
 		FileWriter writer = new FileWriter(FileName);
 		for (char ch: this.Stringfy().toCharArray()) {

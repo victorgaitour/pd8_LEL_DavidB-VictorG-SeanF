@@ -3,7 +3,7 @@ import java.lang.*;
 import java.io.*;
 
 public class StackVisualizer <T> extends Visualizer<T>{
-    public  ArrayList <T> vis;
+    public  ArrayList <T> vis; //underlying arrayList
     private int top;
     final static String ESC = "\033[";
     public int typenum = 0;

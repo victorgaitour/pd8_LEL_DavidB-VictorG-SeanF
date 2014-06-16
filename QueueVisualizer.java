@@ -3,7 +3,7 @@ import java.io.*;
 import java.lang.*;
 public class QueueVisualizer<T> extends Visualizer<T>{
     private ALQueue<T> queue;
-    private String ESC="\033[";
+    private String ESC="\033[";//skips alot of lines on terminal screen
     Scanner sc;
     int typenum=0;
     String type="";
@@ -185,10 +185,10 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 	    System.out.println ("Error: Conversion error");
 	    
 	}
-	}
+    }
 	
 	
-    
+    //underlying ALQueue with underlying arraylist
     public class ALQueue<T>{
 
 	public ArrayList<T> _queue;
@@ -223,7 +223,7 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 	
 	
 	public String toString(){
-		return _queue.toString();
-		}
-}
+	    return _queue.toString();
+	}
+    }
 }

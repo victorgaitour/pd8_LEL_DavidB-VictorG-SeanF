@@ -430,7 +430,7 @@ public class LListVisualizer<T>{
 
 
 
-    public String toString() { 
+    public String toString() { //mimics appearance of LInkedLists
 	    
 	String retStr = "|";
 	if (size()==1){
@@ -450,7 +450,7 @@ public class LListVisualizer<T>{
 	return retStr;
     }
 
-    public String Stringfy () {
+    public String Stringfy () {//data to String with commas.
 	String retStr = "";
 	for (int i = 0; i < this.size(); i++) {
 	    retStr += "" + this.get (i) + ",";
