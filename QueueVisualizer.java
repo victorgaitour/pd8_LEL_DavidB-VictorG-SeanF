@@ -33,7 +33,7 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 	    }
 	}
     }
- 	public void modify () {
+    public void modify () {
 	boolean mod = true;
 	int choice;
 	while (mod){
@@ -82,10 +82,12 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 		else if (choice == 2) {
 		    System.out.println ("Removing Min:");
 		    delete();
+		    mod = false;
 		}
 		else if (choice == 3) {
 		    System.out.println ("Peeking at Min:");
 		    peek();
+		    mod = false;
 		}
 		else {
 		    System.out.println( "ERROR: Please input a valid choice" );
@@ -96,15 +98,22 @@ public class QueueVisualizer<T> extends Visualizer<T>{
 	    catch (Exception e) {
 		System.out.println( "ERROR: Please input a valid int" );
 	    }
-	}}
+	}
+    }
+
     public void add(T stuff){
 	queue.enqueue(stuff);
 	System.out.println(toString());
     }
     public void delete(){
 	T tmp = queue.dequeue();
-	System.out.println ("" + tmp);
-	System.out.println(toString());
+	if (tmp == null) {
+	    System.out.println ("Queue is empty");
+	}
+	else{
+	    System.out.println ("" + tmp);
+	    System.out.println(toString());
+	}
     }
     
     public void peek () {
