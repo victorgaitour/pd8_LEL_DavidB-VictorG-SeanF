@@ -12,9 +12,9 @@ javac -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:."
 
 java -classpath "lib/jfreechart-1.0.17.jar:jcommon-1.0.22/jcommon-1.0.22.jar:." LEL
 
-If that doesn’t work, you need to download jcommon version 1.0.22 and jfreechart 1.0.17 for this.  Once you download the .zip files, you need to unpack them.  If you have Linux or Unix, while in the directory of the downloaded zip file, enter "tar xvzf jfreechart-1.0.17.zip" into the terminal.  Then enter "tar xvzf jcommon-1.0.22.zip" to unpack jcommon.  If you have Windows, enter "jar -xvf jfreechart-1.0.13.zip" to unpack jfreechart, then enter "jar -xvf jcommon-1.0.22.zip" to unpack jcommon.
+If that doesn’t work, you need to download jcommon version 1.0.22 and jfreechart 1.0.17 (http://sourceforge.net/projects/jfreechart/files/) for this.  Once you download the .zip files, you need to unpack them.  If you have Linux or Unix, while in the directory of the downloaded zip file, enter "tar xvzf jfreechart-1.0.17.zip" into the terminal.  Then enter "tar xvzf jcommon-1.0.22.zip" to unpack jcommon.  If you have Windows, enter "jar -xvf jfreechart-1.0.13.zip" to unpack jfreechart, then enter "jar -xvf jcommon-1.0.22.zip" to unpack jcommon.
 
-Once you have unpacked these two files, you should see a folder for each of them, one titled "jfreechart-1.0.17" the other titled "jcommon-1.0.22".  Move both of these files into the pd8_LEL_DavidB-VictorG-SeanF directory, or whatever directory you have for this project.  Next, enter the jfreechart-1.0.17 folder and find a folder called "lib".  Take this folder and also place it into the pd8_LEL_DavidB-VictorG-SeanF directory.
+Once you have unpacked these two files, you should see a folder for each of them, one titled "jfreechart-1.0.17" the other titled "jcommon-1.0.22".  Move both of these files into the pd8_LEL_DavidB-VictorG-SeanF directory, or whatever directory you have for this project.  Next, enter the jfreechart-1.0.17 folder and find a folder called "lib".  Take this folder and also move it into the pd8_LEL_DavidB-VictorG-SeanF directory.
 
 Now you have all the .jar files in place for this project.  Some files use jfreechart, others don't, but this command should work to compile any (NOTE: if you have Windows, replace the colons in the following statement with semicolons):
 
